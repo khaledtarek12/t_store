@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:t_store/features/screens/signup/signup.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/constants/text_strings.dart';
@@ -74,7 +76,9 @@ class LoginFormPage extends StatelessWidget {
                         color: dark ? TColors.darkGrey : TColors.grey,
                         width: 2)),
                 child: const Text(TTexts.createAccount),
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(const SignupScreen());
+                },
               ),
             ),
           ],

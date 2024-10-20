@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common/styles/spacing_styles.dart';
-import 'package:t_store/features/screens/login/widgets/divider_form.dart';
+import 'package:t_store/common/widgets/login_signup/divider_form.dart';
 import 'package:t_store/features/screens/login/widgets/login_form_page.dart';
 import 'package:t_store/features/screens/login/widgets/login_header.dart';
-import 'package:t_store/features/screens/login/widgets/socail_button_form.dart';
+import 'package:t_store/common/widgets/login_signup/socail_buttons.dart';
 import 'package:t_store/utils/constants/sizes.dart';
+import 'package:t_store/utils/constants/text_strings.dart';
 import 'package:t_store/utils/helpers/helper_function.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -29,10 +31,11 @@ class LoginScreen extends StatelessWidget {
                 //Form
                 const LoginFormPage(),
                 //Divider
-                TFormDivider(dark: dark),
+                TFormDivider(
+                    dark: dark, dividerText: TTexts.orSignInWith.capitalize!),
                 const SizedBox(height: TSizes.spaceBtwItems),
                 //Footer
-                const TFormSocialButtons()
+                const TSocialButtons()
               ],
             ),
           ),
