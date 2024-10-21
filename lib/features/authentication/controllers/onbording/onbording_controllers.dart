@@ -22,7 +22,7 @@ class OnBordingControllers extends GetxController {
   //update current index & jump to the next page
   void nextPage() {
     if (currentPageIndex.value == 2) {
-      Get.offAll(const LoginScreen());
+      Get.offAll(() => const LoginScreen());
     } else {
       int page = currentPageIndex.value + 1;
       pageController.jumpToPage(page);

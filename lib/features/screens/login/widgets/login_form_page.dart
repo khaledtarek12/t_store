@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:t_store/features/screens/password_configration/forget_password.dart';
 import 'package:t_store/features/screens/signup/signup.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
@@ -53,7 +54,7 @@ class LoginFormPage extends StatelessWidget {
 
                 //Forrget password
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () => Get.to(() =>const ForgetPasswordScreen()),
                     child: const Text(TTexts.forrgetPassword)),
               ],
             ),
@@ -77,7 +78,7 @@ class LoginFormPage extends StatelessWidget {
                         width: 2)),
                 child: const Text(TTexts.createAccount),
                 onPressed: () {
-                  Get.to(const SignupScreen());
+                  Get.to(() =>const SignupScreen());
                 },
               ),
             ),
