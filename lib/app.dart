@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:t_store/features/screens/onbording/onbording.dart';
+import 'package:t_store/features/authentication/screens/onbording/onbording.dart';
 import 'package:t_store/utils/theme/theme.dart';
 
 class TStoreApp extends StatelessWidget {

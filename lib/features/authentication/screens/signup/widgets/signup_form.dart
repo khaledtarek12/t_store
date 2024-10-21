@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:t_store/features/screens/signup/verify_email.dart';
-import 'package:t_store/features/screens/signup/widgets/terms_and_condition_check_box.dart';
+import 'package:t_store/features/authentication/screens/signup/verify_email.dart';
+import 'package:t_store/features/authentication/screens/signup/widgets/terms_and_condition_check_box.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/constants/text_strings.dart';
 

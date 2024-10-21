@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:t_store/features/authentication/controllers/onBording/onBording_controllers.dart';
-import 'package:t_store/features/screens/onbording/widgets/onboarding_dot_navigation.dart';
-import 'package:t_store/features/screens/onbording/widgets/onboarding_next_button.dart';
-import 'package:t_store/features/screens/onbording/widgets/onboarding_skip.dart';
+import 'package:t_store/features/authentication/screens/onbording/widgets/onboarding_dot_navigation.dart';
+import 'package:t_store/features/authentication/screens/onbording/widgets/onboarding_skip.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/text_strings.dart';
-
+import 'widgets/onboarding_next_button.dart';
 import 'widgets/onboarding_page.dart';
 
 class OnbordingScreen extends StatelessWidget {

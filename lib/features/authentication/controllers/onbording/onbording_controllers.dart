@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:t_store/features/screens/login/login.dart';
+import 'package:t_store/features/authentication/screens/login/login.dart';
 
 class OnBordingControllers extends GetxController {
   static OnBordingControllers get instance => Get.find();
