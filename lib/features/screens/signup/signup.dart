@@ -18,7 +18,7 @@ class SignupScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () => Get.off(context),
+            onPressed: () => Get.back(),
             icon: Icon(
               CupertinoIcons.left_chevron,
               color: dark ? TColors.light : TColors.balck,
