@@ -43,4 +43,5 @@ class TImages {
   static const String promoBanner1 = 'assets/images/banners/bromoBanner1.png';
   static const String promoBanner2 = 'assets/images/banners/bromoBanner2.png';
   static const String promoBanner3 = 'assets/images/banners/bromoBanner3.png';
+  static const String promoBanner4 = 'assets/images/banners/bromoBanner4.png';
 }

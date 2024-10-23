@@ -3,6 +3,7 @@ import 'package:t_store/common/widgets/custom_shapes/container/primary_header_co
 import 'package:t_store/common/widgets/custom_shapes/container/search_container.dart';
 import 'package:t_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:t_store/features/shop/screens/home/widgets/home_categroy.dart';
+import 'package:t_store/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
@@ -11,11 +12,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const TPrimaryHeaderContainer(
+            TPrimaryHeaderContainer(
               chilld: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -31,11 +32,14 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(TSizes.defultSpace),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(TSizes.md)),
-                child: Image.asset(TImages.promoBanner1),
+              padding: EdgeInsets.all(TSizes.defultSpace),
+              child: TpromoSlider(
+                banners: [
+                  TImages.promoBanner1,
+                  TImages.promoBanner2,
+                  TImages.promoBanner3,
+                  TImages.promoBanner4,
+                ],
               ),
             ),
           ],
