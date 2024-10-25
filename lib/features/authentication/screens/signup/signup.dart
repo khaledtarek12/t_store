@@ -21,7 +21,7 @@ class SignupScreen extends StatelessWidget {
             onPressed: () => Get.back(),
             icon: Icon(
               CupertinoIcons.left_chevron,
-              color: dark ? TColors.light : TColors.balck,
+              color: dark ? TColors.light : TColors.black,
             )),
       ),
       body: SingleChildScrollView(

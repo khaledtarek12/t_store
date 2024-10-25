@@ -22,7 +22,7 @@ class OnBordingSkip extends StatelessWidget {
             'Skip',
             style: TextStyle(
                 fontSize: TSizes.md,
-                color: dark ? TColors.light : TColors.balck),
+                color: dark ? TColors.light : TColors.black),
           )),
     );
   }

@@ -52,7 +52,7 @@ class TProductCartVertical extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .labelLarge!
-                                .apply(color: TColors.balck))),
+                                .apply(color: TColors.black))),
                   ),
                   //favorite icon button
                   Positioned(

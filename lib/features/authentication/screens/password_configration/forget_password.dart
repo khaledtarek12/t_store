@@ -21,7 +21,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             onPressed: () => Get.back(),
             icon: Icon(
               CupertinoIcons.left_chevron,
-              color: dark ? TColors.light : TColors.balck,
+              color: dark ? TColors.light : TColors.black,
             )),
       ),
       body: Padding(
@@ -53,7 +53,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () => Get.off(() =>const ResetPasswordScreen()),
+                  onPressed: () => Get.off(() => const ResetPasswordScreen()),
                   child: const Text(TTexts.submet)),
             ),
           ],

@@ -31,7 +31,7 @@ class StoreScreen extends StatelessWidget {
                 pinned: true,
                 floating: true,
                 backgroundColor: THelperFunction.isDarkMode(context)
-                    ? TColors.balck
+                    ? TColors.black
                     : TColors.white,
                 expandedHeight: 440,
                 flexibleSpace: Padding(
@@ -77,7 +77,7 @@ class StoreScreen extends StatelessWidget {
                                       backgroundColor: Colors.transparent,
                                       overLayColor: isDark
                                           ? TColors.white
-                                          : TColors.balck),
+                                          : TColors.black),
                                 ),
                                 const SizedBox(width: TSizes.spaceBtwItems / 2),
                                 //// Text

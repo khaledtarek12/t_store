@@ -18,10 +18,10 @@ class VerifyEmailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(automaticallyImplyLeading: false, actions: [
         IconButton(
-            onPressed: () => Get.offAll(() =>const LoginScreen()),
+            onPressed: () => Get.offAll(() => const LoginScreen()),
             icon: Icon(
               CupertinoIcons.clear,
-              color: dark ? TColors.light : TColors.balck,
+              color: dark ? TColors.light : TColors.black,
             )),
       ]),
       body: SingleChildScrollView(
@@ -54,12 +54,13 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: () => Get.to(() =>
-                            SuccessScreen(
+                      onPressed: () => Get.to(
+                            () => SuccessScreen(
                               image: TImages.emailCreatedSuccefully,
                               title: TTexts.yourAccountCreatedTitle,
                               subTitle: TTexts.yourAccountCreatedSubTitle,
-                              onPressed: () => Get.off(() =>const LoginScreen()),
+                              onPressed: () =>
+                                  Get.off(() => const LoginScreen()),
                             ),
                           ),
                       child: const Text(TTexts.tcontinue))),

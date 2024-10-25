@@ -20,7 +20,7 @@ class OnBordingNextButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
-          backgroundColor: dark ? TColors.primary : TColors.balck,
+          backgroundColor: dark ? TColors.primary : TColors.black,
           side: BorderSide.none,
         ),
         onPressed: () => OnBordingControllers.instance.nextPage(),

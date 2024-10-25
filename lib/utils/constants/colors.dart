@@ -47,7 +47,7 @@ class TColors {
   static const Color info = Color(0xff1976d2);
 
   //Nautral Shades
-  static const Color balck = Color(0xff232323);
+  static const Color black = Color.fromARGB(255, 0, 0, 0);
   static const Color darkerGrey = Color(0xff4f4f4f);
   static const Color darkGrey = Color(0xff939393);
   static const Color grey = Color(0xffe0e0e0);
