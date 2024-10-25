@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:t_store/common/layouts/grid_layout.dart';
 import 'package:t_store/common/widgets/custom_shapes/container/primary_header_container.dart';
 import 'package:t_store/common/widgets/custom_shapes/container/search_container.dart';
 import 'package:t_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:t_store/features/shop/screens/home/widgets/home_categroy.dart';
+import 'package:t_store/common/widgets/products/product_cards/product_cart_virtical.dart';
 import 'package:t_store/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
@@ -12,11 +14,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TPrimaryHeaderContainer(
+            const TPrimaryHeaderContainer(
               chilld: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -32,13 +34,24 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(TSizes.defultSpace),
-              child: TpromoSlider(
-                banners: [
-                  TImages.promoBanner1,
-                  TImages.promoBanner2,
-                  TImages.promoBanner3,
-                  TImages.promoBanner4,
+              padding: const EdgeInsets.all(TSizes.defultSpace),
+              child: Column(
+                children: [
+                  //promo slider
+                  const TpromoSlider(banners: [
+                    TImages.promoBanner1,
+                    TImages.promoBanner2,
+                    TImages.promoBanner3,
+                    TImages.promoBanner4,
+                  ]),
+                  const SizedBox(height: TSizes.spaceBtwScetions),
+
+                  //popular product
+                  TGridLayout(
+                      mainAxisExtent: 288,
+                      itemCount: 4,
+                      itemBuilder: (context, index) =>
+                          const TProductCartVertical())
                 ],
               ),
             ),

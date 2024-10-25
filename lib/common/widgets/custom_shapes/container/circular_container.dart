@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/utils/constants/colors.dart';
 
-class TCircutarContainer extends StatelessWidget {
-  const TCircutarContainer({
+class TCircularContainer extends StatelessWidget {
+  const TCircularContainer({
     super.key,
     this.width = 400,
     this.height = 400,

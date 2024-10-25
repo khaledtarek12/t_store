@@ -74,6 +74,7 @@ flutter:
   assets:
     - assets/images/on_boarding_images/
     - assets/images/verify_email/
+    - assets/images/product_cart/
     - assets/icons/categories/
     - assets/images/banners/
     - assets/icons/brands/

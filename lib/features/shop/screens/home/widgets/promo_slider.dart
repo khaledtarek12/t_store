@@ -35,7 +35,7 @@ class TpromoSlider extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               for (int i = 0; i < banners.length; i++)
-                TCircutarContainer(
+                TCircularContainer(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.decelerate,
                   margin: const EdgeInsets.only(right: 10),
