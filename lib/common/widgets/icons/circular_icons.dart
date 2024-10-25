@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
-import 'package:t_store/utils/helpers/helper_function.dart';
 
 class TcircularIcon extends StatelessWidget {
   const TcircularIcon(
@@ -22,17 +20,17 @@ class TcircularIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
+    // final dark = THelperFunction.isDarkMode(context);
     return Container(
       width: width,
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        color: backgroundColor != null
-            ? backgroundColor!
-            : dark
-                ? TColors.balck.withOpacity(0.9)
-                : TColors.white.withOpacity(0.9),
+        // color: backgroundColor != null
+        //     ? backgroundColor!
+        //     : dark
+        //         ? TColors.balck.withOpacity(0.9)
+        //         : TColors.white.withOpacity(0.9),
       ),
       child: IconButton(
         onPressed: onPressed,

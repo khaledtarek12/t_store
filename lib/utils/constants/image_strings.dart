@@ -30,7 +30,7 @@ class TImages {
       'assets/icons/categories/sparklingDiamond.png';
   static const String bowlingWhite =
       'assets/icons/categories/bowling_white.png';
-  static const String tailorsDummy = 'assets/icons/categories/tailorsDummy.png';
+  static const String clothIcon = 'assets/icons/categories/tailorsDummy.png';
   static const String woodenToyCar = 'assets/icons/categories/woodenToyCar.png';
   static const String bowlingDark = 'assets/icons/categories/bowling_dark.png';
   static const String diningChair = 'assets/icons/categories/diningChair.png';
