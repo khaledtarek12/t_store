@@ -7,6 +7,7 @@ import 'package:t_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:t_store/features/shop/screens/home/widgets/home_categroy.dart';
 import 'package:t_store/common/widgets/products/product_cards/product_cart_virtical.dart';
 import 'package:t_store/features/shop/screens/home/widgets/promo_slider.dart';
+import 'package:t_store/navigation_menu.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
@@ -15,8 +16,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = NavigationController.instance;
+
     return Scaffold(
       body: SingleChildScrollView(
+        controller: controller.scrollController,
         child: Column(
           children: [
             const TPrimaryHeaderContainer(
@@ -26,9 +30,11 @@ class HomeScreen extends StatelessWidget {
                   //App bar
                   THomeAppBar(),
                   SizedBox(height: TSizes.spaceBtwScetions),
+
                   //Search bar
                   TSearchContainer(text: 'Search in Store'),
                   SizedBox(height: TSizes.spaceBtwScetions),
+
                   //Categories
                   THomeCategroy(),
                   SizedBox(height: TSizes.spaceBtwScetions * 1.5),
@@ -54,10 +60,11 @@ class HomeScreen extends StatelessWidget {
 
                   //popular product
                   TGridLayout(
-                      mainAxisExtent: 288,
-                      itemCount: 4,
-                      itemBuilder: (context, index) =>
-                          const TProductCartVertical())
+                    mainAxisExtent: 288,
+                    itemCount: 4,
+                    itemBuilder: (context, index) =>
+                        const TProductCartVertical(),
+                  ),
                 ],
               ),
             ),
