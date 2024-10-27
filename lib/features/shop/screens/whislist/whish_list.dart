@@ -6,6 +6,7 @@ import 'package:t_store/common/widgets/appbar/custom_appbar.dart';
 import 'package:t_store/common/widgets/icons/circular_icons.dart';
 import 'package:t_store/common/widgets/products/product_cards/product_cart_virtical.dart';
 import 'package:t_store/features/shop/screens/home/home.dart';
+import 'package:t_store/navigation_menu.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
 class WhishListScreen extends StatelessWidget {
@@ -13,6 +14,7 @@ class WhishListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = NavigationController.instance;
     return Scaffold(
       appBar: TAppbar(
           title: Text('Whislist',
@@ -23,6 +25,7 @@ class WhishListScreen extends StatelessWidget {
                 onPressed: () => Get.to(() => const HomeScreen()))
           ]),
       body: SingleChildScrollView(
+        controller: controller.scrollController,
         child: Padding(
           padding: const EdgeInsets.all(TSizes.defultSpace),
           child: Column(

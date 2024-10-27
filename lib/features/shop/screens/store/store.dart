@@ -7,6 +7,7 @@ import 'package:t_store/common/widgets/products/cart/cart_menu_cion.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
 import 'package:t_store/common/widgets/brands/brand_cards.dart';
 import 'package:t_store/features/shop/screens/store/widgets/category_tab.dart';
+import 'package:t_store/navigation_menu.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_function.dart';
@@ -16,6 +17,7 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = NavigationController.instance;
     return DefaultTabController(
       initialIndex: 0,
       length: 5,
@@ -26,6 +28,7 @@ class StoreScreen extends StatelessWidget {
           actions: [TCartCounterIcon(onPressed: () {})],
         ),
         body: NestedScrollView(
+            controller: controller.scrollController,
             headerSliverBuilder: (_, innerBoxIsScrolled) {
               return [
                 SliverAppBar(

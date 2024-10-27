@@ -7,6 +7,7 @@ import 'package:t_store/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:t_store/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
 import 'package:t_store/features/authentication/screens/login/login.dart';
+import 'package:t_store/navigation_menu.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_function.dart';
@@ -16,8 +17,10 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = NavigationController.instance;
     return Scaffold(
       body: SingleChildScrollView(
+        controller: controller.scrollController,
         child: Column(
           children: [
             ///...Header
