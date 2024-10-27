@@ -54,19 +54,22 @@ class TProductCartVertical extends StatelessWidget {
                                 .labelLarge!
                                 .apply(color: TColors.black))),
                   ),
+
                   //favorite icon button
                   Positioned(
                     right: 0,
                     top: 0,
                     child: TcircularIcon(
-                        icon: Iconsax.heart5,
-                        onPressed: () {},
-                        color: Colors.red),
+                      icon: Iconsax.heart5,
+                      color: Colors.red,
+                      onPressed: () {},
+                    ),
                   )
                 ],
               ),
             ),
             const SizedBox(height: TSizes.spaceBtwItems / 2),
+
             //Details
             const Padding(
               padding: EdgeInsets.only(left: TSizes.sm),
@@ -80,7 +83,9 @@ class TProductCartVertical extends StatelessWidget {
                 ],
               ),
             ),
+
             const Spacer(),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
