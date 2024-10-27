@@ -24,6 +24,7 @@ class TImages {
   // Social logo
   static const String facebook = 'assets/logos/facebook.png';
   static const String google = 'assets/logos/google.png';
+  static const String user = 'assets/images/user/user.png';
 
   // Products logo
   static const String sparklingDiamond =

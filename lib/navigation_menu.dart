@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:t_store/features/personalization/screens/setting/setting.dart';
 import 'package:t_store/features/shop/screens/home/home.dart';
 import 'package:t_store/features/shop/screens/store/store.dart';
 import 'package:t_store/features/shop/screens/whislist/whish_list.dart';
@@ -62,6 +63,6 @@ class NavigationController extends GetxController {
     const HomeScreen(),
     const StoreScreen(),
     const WhishListScreen(),
-    Container(color: Colors.blue),
+    const SettingScreen(),
   ];
 }
