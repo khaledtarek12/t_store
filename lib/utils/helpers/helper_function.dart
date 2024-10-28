@@ -6,30 +6,52 @@ class THelperFunction {
   THelperFunction._();
 
   static Color? getColor({required String value}) {
-    if (value == 'Green') {
-      return Colors.green;
-    } else if (value == 'Red') {
-      return Colors.red;
-    } else if (value == 'Blue') {
-      return Colors.blue;
-    } else if (value == 'Pink') {
-      return Colors.pink;
-    } else if (value == 'Gery') {
-      return Colors.grey;
-    } else if (value == 'Purple') {
-      return Colors.purple;
-    } else if (value == 'Black') {
-      return Colors.black;
-    } else if (value == 'White') {
-      return Colors.white;
-    } else if (value == 'Brown') {
-      return Colors.brown;
-    } else if (value == 'Teal') {
-      return Colors.teal;
-    } else if (value == 'Indigo') {
-      return Colors.indigo;
-    } else {
-      return null;
+    switch (value.toLowerCase()) {
+      case 'green':
+        return Colors.green;
+      case 'red':
+        return Colors.red;
+      case 'blue':
+        return Colors.blue;
+      case 'pink':
+        return Colors.pink;
+      case 'grey':
+      case 'gray':
+        return Colors.grey;
+      case 'purple':
+        return Colors.purple;
+      case 'black':
+        return Colors.black;
+      case 'white':
+        return Colors.white;
+      case 'yellow':
+        return Colors.yellow;
+      case 'orange':
+        return Colors.orange;
+      case 'brown':
+        return Colors.brown;
+      case 'teal':
+        return Colors.teal;
+      case 'indigo':
+        return Colors.indigo;
+      case 'amber':
+        return Colors.amber;
+      case 'cyan':
+        return Colors.cyan;
+      case 'lime':
+        return Colors.lime;
+      case 'light blue':
+        return Colors.lightBlue;
+      case 'light green':
+        return Colors.lightGreen;
+      case 'deep orange':
+        return Colors.deepOrange;
+      case 'deep purple':
+        return Colors.deepPurple;
+      case 'blue grey':
+        return Colors.blueGrey;
+      default:
+        return null;
     }
   }
 
