@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:get/get.dart';
+import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/device/device_utility.dart';
+import 'package:t_store/utils/helpers/helper_function.dart';
 
 class TAppbar extends StatelessWidget implements PreferredSizeWidget {
   const TAppbar({
@@ -22,6 +24,7 @@ class TAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunction.isDarkMode(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: TSizes.md),
       child: AppBar(
@@ -29,7 +32,8 @@ class TAppbar extends StatelessWidget implements PreferredSizeWidget {
         leading: showBackArrow
             ? IconButton(
                 onPressed: () => Get.back(),
-                icon: const Icon(IconlyLight.arrowLeft2),
+                icon: Icon(IconlyLight.arrowLeft2,
+                    color: dark ? TColors.white : TColors.black),
               )
             : leadingIcon != null
                 ? IconButton(
