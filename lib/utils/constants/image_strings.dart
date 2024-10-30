@@ -46,6 +46,12 @@ class TImages {
   static const String promoBanner3 = 'assets/images/banners/bromoBanner3.png';
   static const String promoBanner4 = 'assets/images/banners/bromoBanner4.png';
 
+  //User Reviews
+    static const String userProfileImage1 = 'assets/images/user/userProfileImage1.png';
+    static const String userProfileImage2 = 'assets/images/user/userProfileImage2.png';
+    static const String userProfileImage3 = 'assets/images/user/userProfileImage3.png';
+
+
   //product cart
   static const String productImage1 =
       'assets/images/product_cart/nicke_shoes-removebg.png';
