@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:t_store/features/shop/controllers/progress_controller.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/device/device_utility.dart';
 
@@ -14,6 +16,8 @@ class TRatingProgressBarIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller =
+        Get.put(ProgressController(targetValue: value), tag: text);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -25,12 +29,15 @@ class TRatingProgressBarIndicator extends StatelessWidget {
           flex: 11,
           child: SizedBox(
             width: TDeviceUtility.getScreenWidth() * 0.8,
-            child: LinearProgressIndicator(
-              value: value,
-              minHeight: 11,
-              backgroundColor: TColors.grey,
-              valueColor: const AlwaysStoppedAnimation(TColors.primary),
-              borderRadius: BorderRadius.circular(7),
+            child: Obx(
+              () => LinearProgressIndicator(
+                value:
+                    controller.animatedValue.value, 
+                minHeight: 11,
+                backgroundColor: TColors.grey,
+                valueColor: const AlwaysStoppedAnimation(TColors.primary),
+                borderRadius: BorderRadius.circular(7),
+              ),
             ),
           ),
         ),

@@ -12,9 +12,9 @@ class TOverAllproductRating extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Flexible(
-            flex: 3,
-            child:
-                Text('4.8', style: Theme.of(context).textTheme.displayLarge)),
+          flex: 3,
+          child: Text('4.8', style: Theme.of(context).textTheme.displayLarge),
+        ),
         const Flexible(
           flex: 7,
           child: Column(
@@ -26,7 +26,7 @@ class TOverAllproductRating extends StatelessWidget {
               TRatingProgressBarIndicator(text: '1', value: 0.2),
             ],
           ),
-        )
+        ),
       ],
     );
   }
