@@ -47,6 +47,7 @@ class TVerticallmageText extends StatelessWidget {
             SizedBox(
               width: 55,
               child: Text(
+                textAlign: TextAlign.center,
                 title,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,

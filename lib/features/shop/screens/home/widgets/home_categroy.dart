@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common/widgets/image_text_widget/vertical_image_text.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
+import 'package:t_store/features/shop/screens/sub_categories/sub_categories.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_function.dart';
-
 
 class THomeCategroy extends StatelessWidget {
   const THomeCategroy({
@@ -36,10 +37,10 @@ class THomeCategroy extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return TVerticallmageText(
-                  image: TImages.bowlingWhite,
-                  title: 'bowling',
+                  image: TImages.shoes,
+                  title: 'Shoes',
                   backGroundColor: (dark ? TColors.dark : TColors.white),
-                  onTap: () {},
+                  onTap: () => Get.to(() => const SubCategoriesScreen()),
                 );
               },
             ),
