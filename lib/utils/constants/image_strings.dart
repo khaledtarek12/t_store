@@ -41,6 +41,7 @@ class TImages {
   // Payment Succefully
   static const String paymentSuccefully =
       'assets/images/payment_methods/paymentSuccefully.gif';
+  static const String success = 'assets/images/payment_methods/success.gif';
 
   // Products logo
   static const String sparklingDiamond =
