@@ -7,11 +7,13 @@ class TPricingCalculator {
     return totatPrice;
   }
 
+  //..catcuLate Shipping Cost
   static String catcuLateShippingCost(double productPrice, String location) {
     double shippingCost = getShippingCost(location);
     return shippingCost.toStringAsFixed(2);
   }
 
+  //..catcuLate Tax Cost
   static String calculateTax(double productPrice, String location) {
     double taxRate = getTaxRateForLocation(location);
     double taxAmount = productPrice * taxRate;

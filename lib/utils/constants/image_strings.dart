@@ -26,6 +26,22 @@ class TImages {
   static const String google = 'assets/logos/google.png';
   static const String user = 'assets/images/user/user.png';
 
+  // Payment Methods
+  static const String paypal = 'assets/images/payment_methods/paypal.png';
+  static const String applePay = 'assets/images/payment_methods/applePay.png';
+  static const String creditCard =
+      'assets/images/payment_methods/creditCard.png';
+  static const String googlePay = 'assets/images/payment_methods/googlePay.png';
+  static const String masterCard =
+      'assets/images/payment_methods/masterCard.png';
+  static const String payStacl = 'assets/images/payment_methods/payStacl.png';
+  static const String paytm = 'assets/images/payment_methods/paytm.png';
+  static const String visa = 'assets/images/payment_methods/visa.png';
+
+  // Payment Succefully
+  static const String paymentSuccefully =
+      'assets/images/payment_methods/paymentSuccefully.gif';
+
   // Products logo
   static const String sparklingDiamond =
       'assets/icons/categories/sparklingDiamond.png';
@@ -47,10 +63,12 @@ class TImages {
   static const String promoBanner4 = 'assets/images/banners/bromoBanner4.png';
 
   //User Reviews
-    static const String userProfileImage1 = 'assets/images/user/userProfileImage1.png';
-    static const String userProfileImage2 = 'assets/images/user/userProfileImage2.png';
-    static const String userProfileImage3 = 'assets/images/user/userProfileImage3.png';
-
+  static const String userProfileImage1 =
+      'assets/images/user/userProfileImage1.png';
+  static const String userProfileImage2 =
+      'assets/images/user/userProfileImage2.png';
+  static const String userProfileImage3 =
+      'assets/images/user/userProfileImage3.png';
 
   //product cart
   static const String productImage1 =
