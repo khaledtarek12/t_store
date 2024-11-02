@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:t_store/common/styles/spacing_styles.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/constants/text_strings.dart';
@@ -10,10 +11,12 @@ class SuccessScreen extends StatelessWidget {
       required this.image,
       required this.title,
       required this.subTitle,
-      required this.onPressed});
+      required this.onPressed,
+      this.isIamge = true});
 
   final String image, title, subTitle;
   final VoidCallback onPressed;
+  final bool? isIamge;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,14 @@ class SuccessScreen extends StatelessWidget {
           child: Column(
             children: [
               // images
-              Image.asset(image, width: THelperFunction.screenWidth() * 0.6),
+              isIamge!
+                  ? Image.asset(image,
+                      width: THelperFunction.screenWidth() * 0.6)
+                  : Lottie.asset(
+                      image, // Path to your Lottie file
+                      width: THelperFunction.screenWidth(),
+                      fit: BoxFit.contain, // Adjust fit as needed
+                    ),
               const SizedBox(height: TSizes.spaceBtwScetions),
 
               // title and subtitle
