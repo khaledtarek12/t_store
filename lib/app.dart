@@ -16,9 +16,8 @@ class TStoreApp extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       home: const Scaffold(
         backgroundColor: TColors.primary,
-        body:  CustomLoading(),
+        body: CustomLoading(),
       ),
     );
   }
 }
-
