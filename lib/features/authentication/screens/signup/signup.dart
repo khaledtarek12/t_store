@@ -15,35 +15,38 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunction.isDarkMode(context);
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () => Get.back(),
-            icon: Icon(
-              CupertinoIcons.left_chevron,
-              color: dark ? TColors.light : TColors.black,
-            )),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(TSizes.defultSpace),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Title
-              Text(TTexts.signUpTitle,
-                  style: Theme.of(context).textTheme.headlineMedium),
-              const SizedBox(height: TSizes.spaceBtwScetions),
-              // Form
-              const SingUpFormPage(),
-              const SizedBox(height: TSizes.spaceBtwScetions),
-              // Divider
-              TFormDivider(
-                  dark: dark, dividerText: TTexts.orSignUpWith.capitalize!),
-              const SizedBox(height: TSizes.spaceBtwScetions),
-              //social buttons
-              const TSocialButtons()
-            ],
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+              onPressed: () => Get.back(),
+              icon: Icon(
+                CupertinoIcons.left_chevron,
+                color: dark ? TColors.light : TColors.black,
+              )),
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(TSizes.defultSpace),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Title
+                Text(TTexts.signUpTitle,
+                    style: Theme.of(context).textTheme.headlineMedium),
+                const SizedBox(height: TSizes.spaceBtwScetions),
+                // Form
+                const SingUpFormPage(),
+                const SizedBox(height: TSizes.spaceBtwScetions),
+                // Divider
+                TFormDivider(
+                    dark: dark, dividerText: TTexts.orSignUpWith.capitalize!),
+                const SizedBox(height: TSizes.spaceBtwScetions),
+                //social buttons
+                const TSocialButtons()
+              ],
+            ),
           ),
         ),
       ),

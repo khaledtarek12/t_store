@@ -26,6 +26,9 @@ class TImages {
   static const String google = 'assets/logos/google.png';
   static const String user = 'assets/images/user/user.png';
 
+  // loading
+  static const String loading = 'assets/images/loading/AnikiHamster.json';
+
   // Payment Methods
   static const String paypal = 'assets/images/payment_methods/paypal.png';
   static const String applePay = 'assets/images/payment_methods/applePay.png';

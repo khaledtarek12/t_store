@@ -30,8 +30,8 @@ class VerifyEmailScreen extends StatelessWidget {
           child: Column(
             children: [
               // images
-              Image.asset(TImages.verifyEmail,
-                  width: THelperFunction.screenWidth() * 0.6),
+              Image.asset(TImages.checkEmaiDark,
+                  width: THelperFunction.screenWidth() * 0.8),
               const SizedBox(height: TSizes.spaceBtwScetions),
 
               // title and subtitle

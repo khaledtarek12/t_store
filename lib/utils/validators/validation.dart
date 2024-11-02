@@ -1,7 +1,7 @@
 class TValidator {
-  static String? displayNamevalidator(String? displayName) {
+  static String? displayNamevalidator(String fieldName, String? displayName) {
     if (displayName == null || displayName.isEmpty) {
-      return 'Display name cannot be empty';
+      return '$fieldName is requird. ';
     }
     if (displayName.length < 3 || displayName.length > 20) {
       return 'Display name must be between 3 and 20 characters';
@@ -45,10 +45,10 @@ class TValidator {
     if (value == null || value.isEmpty) {
       return 'phoneNumber is required';
     }
-    final phoneRegExp = RegExp(r'^\d{10}$');
+    final phoneRegExp = RegExp(r'^\d{11}$');
 
     if (!phoneRegExp.hasMatch(value)) {
-      return 'Invalid phone number formate (10 digits required)';
+      return 'Invalid phone number formate (11 digits required)';
     }
     return null;
   }
