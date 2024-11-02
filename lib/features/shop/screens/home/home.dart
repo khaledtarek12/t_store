@@ -43,34 +43,39 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(TSizes.defultSpace),
-              child: Column(
-                children: [
-                  //promo slider
-                  const TpromoSlider(banners: [
-                    TImages.promoBanner1,
-                    TImages.promoBanner2,
-                    TImages.promoBanner3,
-                    TImages.promoBanner4,
-                  ]),
-                  const SizedBox(height: TSizes.spaceBtwScetions),
+            Column(
+              children: [
+                const SizedBox(height: TSizes.spaceBtwItems),
+                //promo slider
+                const TpromoSlider(banners: [
+                  TImages.promoBanner1,
+                  TImages.promoBanner2,
+                  TImages.promoBanner3,
+                  TImages.promoBanner4,
+                ]),
 
-                  //heading
-                  TSectionHeading(
-                      title: 'Popular Products',
-                      onPressed: () => Get.to(() => const AllProdcutScreen())),
-                  const SizedBox(height: TSizes.spaceBtwItems),
+                //heading
+                Padding(
+                  padding: const EdgeInsets.all(TSizes.defultSpace),
+                  child: Column(
+                    children: [
+                      TSectionHeading(
+                          title: 'Popular Products',
+                          onPressed: () =>
+                              Get.to(() => const AllProdcutScreen())),
+                      const SizedBox(height: TSizes.spaceBtwItems),
 
-                  //popular product
-                  TGridLayout(
-                    mainAxisExtent: 288,
-                    itemCount: 4,
-                    itemBuilder: (context, index) =>
-                        const TProductCartVertical(),
+                      //popular product
+                      TGridLayout(
+                        mainAxisExtent: 288,
+                        itemCount: 4,
+                        itemBuilder: (context, index) =>
+                            const TProductCartVertical(),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

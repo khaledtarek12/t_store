@@ -27,10 +27,8 @@ class TpromoSlider extends StatelessWidget {
                 controller.updatePageIndicator(index);
               },
             ),
-            items: banners
-                .map((url) =>
-                    TRoundedlmages(imageUrl: url, width: double.infinity))
-                .toList()),
+            items:
+                banners.map((url) => TRoundedlmages(imageUrl: url)).toList()),
         const SizedBox(height: TSizes.spaceBtwItems),
         Obx(() {
           return Row(
