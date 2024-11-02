@@ -29,7 +29,10 @@ class TAnimationLoaderWidgets extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.8),
           const SizedBox(height: TSizes.spaceBtwItems / 2),
           Text(text,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .apply(color: TColors.white),
               textAlign: TextAlign.center),
           const SizedBox(height: TSizes.defultSpace),
           showAction

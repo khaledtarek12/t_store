@@ -60,7 +60,7 @@ class VerifyEmailScreen extends StatelessWidget {
                               title: TTexts.yourAccountCreatedTitle,
                               subTitle: TTexts.yourAccountCreatedSubTitle,
                               onPressed: () =>
-                                  Get.off(() => const LoginScreen()),
+                                  Get.offAll(() => const LoginScreen()),
                             ),
                           ),
                       child: const Text(TTexts.tcontinue))),
