@@ -29,7 +29,7 @@ class NetworkManager extends GetxController {
   Future<void> updateConnectionStatus(List<ConnectivityResult> result) async {
     connectionStatus.addAll(result);
     if (result.isNotEmpty && result.last == ConnectivityResult.none) {
-      TLoaders.warningSnakBar(title: 'No Internet Connection');
+      TLoaders.customToast(message: 'No Internet Connection');
     }
   }
 
