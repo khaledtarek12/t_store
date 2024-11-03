@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -22,58 +23,70 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
-    // if (email.text != null && password.text != null) {
-    //   email.text = localStorage.read('REMEMBER_ME_EMAIL');
-    //   password.text = localStorage.read('REMEMBER_ME_PASSWORD');
-    // } else {
-    //   return;
-    // }
+    log("Initializing LoginController..."); // Debug: Initialization start
+    if (localStorage.read('REMEMBER_ME_EMAIL') != null &&
+        localStorage.read('REMEMBER_ME_PASSWORD') != null) {
+      email.text = localStorage.read('REMEMBER_ME_EMAIL');
+      password.text = localStorage.read('REMEMBER_ME_PASSWORD');
+      log("Loaded saved credentials from local storage."); // Debug: Loaded credentials
+    } else {
+      log("No saved credentials found."); // Debug: No credentials in storage
+    }
     super.onInit();
   }
 
   Future<void> emailAndPasswordSignin() async {
     try {
+      log("Starting emailAndPasswordSignin..."); // Debug: Start of function
+
       // Start Loading
       TFullScreenLoader.openLoadingDialog(
           'Logging you in....', TImages.loading);
+      log("Loading dialog opened."); // Debug: Loader opened
 
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
+      log("Internet connection check completed: $isConnected"); // Debug: Internet connectivity result
       if (!isConnected) {
         TFullScreenLoader.stopLoading();
+        TLoaders.errorSnakBar(
+            title: 'Connection Error', message: 'No internet connection.');
+        log("No internet connection. Exiting function."); // Debug: No internet
         return;
       }
 
       // Form Validation
       if (!loginFormKey.currentState!.validate()) {
         TFullScreenLoader.stopLoading();
+        TLoaders.errorSnakBar(
+            title: 'Invalid Input', message: 'Please fill out all fields.');
+        log("Form validation failed."); // Debug: Form validation failed
         return;
       }
+      log("Form validation passed."); // Debug: Form validation passed
 
-      // Save Data if Remember Me  is selected
+      // Save Data if Remember Me is selected
       if (rememberMe.value) {
         localStorage.write('REMEMBER_ME_EMAIL', email.text.trim());
         localStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
-        return;
+        log("Remember Me selected. Credentials saved."); // Debug: Remember Me data saved
       }
 
-      // Reqistpr user in the Firebase Authentication Save user data in the Firebase
+      // Attempt login with Firebase Authentication
+      log("Attempting login with Firebase..."); // Debug: Starting login attempt
       await AuthenticationRepository.istance.loginWithEmaitAndPassword(
           email: email.text.trim(), password: password.text.trim());
+      log("Login successful."); // Debug: Login successful
 
-      // remove loader
+      // Remove loader and Redirect
       TFullScreenLoader.stopLoading();
-
-      // Redirect
       AuthenticationRepository.istance.screenRedirect();
-
-      /*......................................................*/
+      log("Loader stopped and user redirected."); // Debug: Loader stopped, user redirected
     } catch (e) {
-      // remove loader
+      // Remove loader and show error message
       TFullScreenLoader.stopLoading();
-
-      // show some Generic Error to the user
       TLoaders.errorSnakBar(title: 'Oh Snap!', message: e.toString());
+      log("Error occurred: $e"); // Debug: Exception caught
     }
   }
 }

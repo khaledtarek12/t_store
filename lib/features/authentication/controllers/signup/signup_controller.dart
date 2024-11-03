@@ -59,6 +59,7 @@ class SignupController extends GetxController {
           message:
               'In order to create account, you must have to read and accept the Privacy Policy & Terms Of Use.',
         );
+        TFullScreenLoader.stopLoading();
         return;
       }
 
@@ -102,5 +103,4 @@ class SignupController extends GetxController {
       TLoaders.errorSnakBar(title: 'Oh Snap!', message: e.toString());
     }
   }
-
 }
