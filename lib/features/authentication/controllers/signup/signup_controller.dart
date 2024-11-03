@@ -102,4 +102,5 @@ class SignupController extends GetxController {
       TLoaders.errorSnakBar(title: 'Oh Snap!', message: e.toString());
     }
   }
+
 }

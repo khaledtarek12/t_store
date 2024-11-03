@@ -6,7 +6,7 @@ import 'package:t_store/common/widgets/custom_shapes/container/primary_header_co
 import 'package:t_store/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:t_store/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
-import 'package:t_store/features/authentication/screens/login/login.dart';
+import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:t_store/features/personalization/screens/address/address.dart';
 import 'package:t_store/features/shop/screens/order/order.dart';
 import 'package:t_store/navigation_menu.dart';
@@ -20,6 +20,7 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = NavigationController.instance;
+    final logoutController = AuthenticationRepository.istance;
     return Scaffold(
       body: SingleChildScrollView(
         controller: controller.scrollController,
@@ -133,9 +134,7 @@ class SettingScreen extends StatelessWidget {
                   SizedBox(
                       width: double.infinity,
                       child: OutlinedButton(
-                          onPressed: () => Get.offAll(
-                                () => const LoginScreen(),
-                              ),
+                          onPressed: () => logoutController.logout(),
                           style: OutlinedButton.styleFrom(
                             side: BorderSide(
                                 color: THelperFunction.isDarkMode(context)

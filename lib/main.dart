@@ -10,7 +10,6 @@ import 'package:t_store/firebase_options.dart';
 
 void main() async {
   //...FireBase
-
   final WidgetsBinding widgetsBinding =
       WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
