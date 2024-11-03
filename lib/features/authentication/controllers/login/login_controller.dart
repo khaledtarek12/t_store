@@ -14,7 +14,7 @@ class LoginController extends GetxController {
   final localStorage = GetStorage();
   final email = TextEditingController();
   final password = TextEditingController();
-  final rememberMe = false.obs;
+  final rememberMe = true.obs;
   final hidePassword = true.obs;
 
   final fEmailNode = FocusNode();

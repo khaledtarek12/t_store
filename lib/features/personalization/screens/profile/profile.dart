@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/appbar/custom_appbar.dart';
 import 'package:t_store/common/widgets/images/t_circular_images.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
 import 'package:t_store/features/personalization/controllers/user_controller.dart';
+import 'package:t_store/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:t_store/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
@@ -54,7 +56,7 @@ class ProfileScreen extends StatelessWidget {
               TProfileMenu(
                   title: 'Name',
                   value: controller.user.value.fullName,
-                  onPressed: () {}),
+                  onPressed: () => Get.to(() => const ChangeNameScreen())),
               TProfileMenu(
                   title: 'Username',
                   value: controller.user.value.userName,
@@ -95,7 +97,7 @@ class ProfileScreen extends StatelessWidget {
               OutlinedButton(
                   style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Colors.red)),
-                  onPressed: () {},
+                  onPressed: () => controller.deleteAccountWarringPopup(),
                   child: const Text('Delete Account',
                       style: TextStyle(color: Colors.red)))
             ],

@@ -3,8 +3,8 @@ import 'package:t_store/utils/formatters/formatter.dart';
 
 class UserModel {
   final String id;
-  final String firstName;
-  final String lastName;
+  String firstName;
+  String lastName;
   final String userName;
   final String email;
   final String phoneNumber;
