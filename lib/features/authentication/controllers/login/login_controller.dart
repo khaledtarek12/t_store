@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
+import 'package:t_store/features/personalization/controllers/user_controller.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/helpers/network_manager.dart';
 import 'package:t_store/utils/popups/full_screen_loader.dart';
@@ -20,6 +21,7 @@ class LoginController extends GetxController {
   final fPasswordNode = FocusNode();
 
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  final userController = Get.put(UserController());
 
   @override
   void onInit() {
@@ -35,6 +37,7 @@ class LoginController extends GetxController {
     super.onInit();
   }
 
+  //-- Email ond Password SiqnIn
   Future<void> emailAndPasswordSignin() async {
     try {
       log("Starting emailAndPasswordSignin..."); // Debug: Start of function
@@ -87,6 +90,47 @@ class LoginController extends GetxController {
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnakBar(title: 'Oh Snap!', message: e.toString());
       log("Error occurred: $e"); // Debug: Exception caught
+    }
+  }
+
+  //-- Google Signin Authentication
+  Future<void> googleSignIn() async {
+    try {
+      // Debug: Start of function
+      log("Starting GoogleSignin...");
+
+      // Start Loading
+      TFullScreenLoader.openLoadingDialog(
+          'Logging you in....', TImages.loading);
+      log("Loading dialog opened."); // Debug: Loader opened
+
+      // Check Internet Connectivity
+      final isConnected = await NetworkManager.instance.isConnected();
+      log("Internet connection check completed: $isConnected"); // Debug: Internet connectivity result
+      if (!isConnected) {
+        TFullScreenLoader.stopLoading();
+        TLoaders.errorSnakBar(
+            title: 'Connection Error', message: 'No internet connection.');
+        log("No internet connection. Exiting function."); // Debug: No internet
+        return;
+      }
+
+      //-- Google Authentication
+      final userCredentials =
+          await AuthenticationRepository.istance.signInWithGoogle();
+
+      // -- Save User Data
+      await userController.saveUserCard(userCredentials);
+
+      // Remove the Loaders
+      TFullScreenLoader.stopLoading();
+
+      // Redirect Screens
+      AuthenticationRepository.istance.screenRedirect();
+    } catch (e) {
+      // Remove the Loaders
+      TFullScreenLoader.stopLoading();
+      TLoaders.errorSnakBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 }
