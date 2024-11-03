@@ -12,7 +12,6 @@ import 'package:t_store/features/shop/screens/order/order.dart';
 import 'package:t_store/navigation_menu.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
-import 'package:t_store/utils/helpers/helper_function.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -136,13 +135,12 @@ class SettingScreen extends StatelessWidget {
                       child: OutlinedButton(
                           onPressed: () => logoutController.logout(),
                           style: OutlinedButton.styleFrom(
-                            side: BorderSide(
-                                color: THelperFunction.isDarkMode(context)
-                                    ? TColors.darkGrey
-                                    : TColors.grey,
-                                width: 2),
+                            backgroundColor: TColors.primary,
+                            side: const BorderSide(
+                                color: TColors.primary, width: 2),
                           ),
-                          child: const Text('Logout'))),
+                          child: const Text('Logout',
+                              style: TextStyle(color: Colors.white)))),
                   const SizedBox(height: TSizes.spaceBtwScetions * 2.5),
                 ],
               ),
