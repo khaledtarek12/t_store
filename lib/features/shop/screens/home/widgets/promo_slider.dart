@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:t_store/common/widgets/images/t_rounded_images.dart';
 import 'package:t_store/features/shop/controllers/home_controller.dart';
 import 'package:t_store/utils/constants/colors.dart';
@@ -13,10 +14,12 @@ class TpromoSlider extends StatelessWidget {
     required this.banners,
   });
 
-  final List banners;
+  final List<String> banners;
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HomeController());
+
     return Column(
       children: [
         CarouselSlider(
@@ -26,7 +29,14 @@ class TpromoSlider extends StatelessWidget {
               controller.updatePageIndicator(index);
             },
           ),
-          items: banners.map((url) => TRoundedlmages(imageUrl: url)).toList(),
+          items: banners.map((url) {
+            return Obx(() {
+              return Skeletonizer(
+                enabled: controller.imageLoading.value,
+                child: TRoundedlmages(imageUrl: url),
+              );
+            });
+          }).toList(),
         ),
         const SizedBox(height: TSizes.spaceBtwItems),
         Obx(() {

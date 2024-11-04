@@ -116,19 +116,5 @@ class UserRepository extends GetxController {
   }
 
   // Upload any Imagge
-  // Future<void> saveUserCard(UserModel user) async {
-  //   try {
-  //     return await dataBase.collection("Users").doc(user.id).set(user.toJson());
-  //   } on FirebaseAuthException catch (e) {
-  //     throw TFirebaseAuthException(code: e.code).message;
-  //   } on FirebaseException catch (e) {
-  //     throw TFirebaseException(code: e.code).message;
-  //   } on FormatException catch (_) {
-  //     throw const TFormatException();
-  //   } on PlatformException catch (e) {
-  //     throw TPlatformException(code: e.code).message;
-  //   } catch (e) {
-  //     throw 'somethinq went wrong. Please try again';
-  //   }
-  // }
+
 }

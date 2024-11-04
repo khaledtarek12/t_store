@@ -31,11 +31,10 @@ class ProfileScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const TCircularImage(
-                      image: TImages.user,
-                      width: 80,
-                      hight: 80,
-                      backgroundColor: TColors.grey,
-                    ),
+                        image: TImages.user,
+                        width: 80,
+                        hight: 80,
+                        backgroundColor: TColors.grey),
                     TextButton(
                         onPressed: () {},
                         child: const Text('Change Profile Picture')),

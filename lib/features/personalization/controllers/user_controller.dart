@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,29 +46,35 @@ class UserController extends GetxController {
     }
   }
 
-  // Function to sove user data to Firestore.
+  // Save user Record from any Registration provider
   Future<void> saveUserCard(UserCredential? userCredentials) async {
     try {
-      if (userCredentials != null) {
-        // Convert Name to First and Last Name
-        final nameParts =
-            UserModel.nameParts(userCredentials.user!.displayName ?? '');
-        final userName =
-            UserModel.generateUsername(userCredentials.user!.displayName ?? '');
+      // First Update Rx User and then check if user data is already stored. If not store new data
+      await fetchUserRecord();
 
-        // Map the Data
-        final newUser = UserModel(
-          id: userCredentials.user!.uid,
-          firstName: nameParts[0],
-          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-          userName: userName,
-          email: userCredentials.user!.email ?? '',
-          phoneNumber: userCredentials.user!.phoneNumber ?? '',
-          profilePicture: userCredentials.user!.photoURL ?? '',
-        );
+      // If no record already stored.
+      if (user.value.id.isEmpty) {
+        if (userCredentials != null) {
+          // Convert Name to First and Last Name
+          final nameParts =
+              UserModel.nameParts(userCredentials.user!.displayName ?? '');
+          final userName = UserModel.generateUsername(
+              userCredentials.user!.displayName ?? '');
 
-        // Save User Data
-        await userRepository.saveUserCard(newUser);
+          // Map the Data
+          final newUser = UserModel(
+            id: userCredentials.user!.uid,
+            firstName: nameParts[0],
+            lastName:
+                nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+            userName: userName,
+            email: userCredentials.user!.email ?? '',
+            phoneNumber: userCredentials.user!.phoneNumber ?? '',
+          );
+
+          // Save User Data
+          await userRepository.saveUserCard(newUser);
+        }
       }
     } catch (e) {
       TLoaders.errorSnakBar(
@@ -161,4 +166,5 @@ class UserController extends GetxController {
       TLoaders.warningSnakBar(title: 'Oh Snap!', message: e.toString());
     }
   }
-}
+
+ }

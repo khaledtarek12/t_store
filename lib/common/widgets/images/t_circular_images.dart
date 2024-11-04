@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:t_store/common/widgets/loading/skeltionizer.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_function.dart';
@@ -35,9 +37,21 @@ class TCircularImage extends StatelessWidget {
                   ? TColors.black
                   : TColors.white),
           borderRadius: BorderRadius.circular(100)),
-      child: isNetworkImage
-          ? Image.network(fit: fit, image, color: overLayColor)
-          : Image.asset(fit: fit, image, color: overLayColor),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: Center(
+          child: isNetworkImage
+              ? CachedNetworkImage(
+                  imageUrl: image,
+                  fit: fit,
+                  color: overLayColor,
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  progressIndicatorBuilder: (context, url, progress) =>
+                      const TSkeletonEffect(width: 55, height: 55),
+                )
+              : Image.asset(fit: fit, image, color: overLayColor),
+        ),
+      ),
     );
   }
 }
