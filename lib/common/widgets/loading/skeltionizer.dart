@@ -8,7 +8,7 @@ class TSkeletonEffect extends StatelessWidget {
     super.key,
     required this.width,
     required this.height,
-    this.radius = 15,
+    this.radius = 50,
     this.color,
   });
 

@@ -1,7 +1,9 @@
 import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:t_store/data/repositories/user/user_repository.dart';
 import 'package:t_store/features/authentication/models/user_model.module.dart';
@@ -18,6 +20,8 @@ class UserController extends GetxController {
 
   final profileLoading = false.obs;
   Rx<UserModel> user = UserModel.empty().obs;
+
+  final imageUploding = false.obs;
   final hidePassword = true.obs;
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
@@ -70,6 +74,7 @@ class UserController extends GetxController {
             userName: userName,
             email: userCredentials.user!.email ?? '',
             phoneNumber: userCredentials.user!.phoneNumber ?? '',
+            profilePicture: userCredentials.user!.photoURL ?? '',
           );
 
           // Save User Data
@@ -167,4 +172,38 @@ class UserController extends GetxController {
     }
   }
 
- }
+  // Upload Profile Imoge
+  uploadUserProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 70,
+        maxHeight: 512,
+        maxWidth: 512,
+      );
+
+      if (image != null) {
+        imageUploding.value = true;
+        // Upload Inage
+        final imageUrl =
+            await userRepository.uploadImagge('Users/Image/Profile/', image);
+
+        // update user Image Record
+        Map<String, dynamic> json = {'ProfilePicture': imageUrl};
+        await userRepository.updateSingleField(json);
+
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+        TLoaders.successSnakBar(
+            title: 'Congratulations',
+            message: 'Your Profile Image has been updated!.');
+      }
+    } catch (e) {
+      TLoaders.errorSnakBar(
+          title: 'Oh Snap!', message: 'Some thing went wrong: $e.');
+      log(e.toString());
+    } finally {
+      imageUploding.value = false;
+    }
+  }
+}

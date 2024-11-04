@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/appbar/custom_appbar.dart';
 import 'package:t_store/common/widgets/images/t_circular_images.dart';
+import 'package:t_store/common/widgets/loading/skeltionizer.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
 import 'package:t_store/features/personalization/controllers/user_controller.dart';
 import 'package:t_store/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:t_store/features/personalization/screens/profile/widgets/profile_menu.dart';
-import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
@@ -30,13 +30,24 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const TCircularImage(
-                        image: TImages.user,
-                        width: 80,
-                        hight: 80,
-                        backgroundColor: TColors.grey),
+                    Obx(() {
+                      final networklmage = controller.user.value.profilePicture;
+                      final image =
+                          networklmage.isNotEmpty ? networklmage : TImages.user;
+
+                      return controller.imageUploding.value
+                          ? const TSkeletonEffect(
+                              width: 80, height: 80, radius: 80)
+                          : TCircularImage(
+                              image: image,
+                              width: 80,
+                              height: 80,
+                              backgroundColor: Colors.red,
+                              isNetworkImage: networklmage.isNotEmpty,
+                            );
+                    }),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () => controller.uploadUserProfilePicture(),
                         child: const Text('Change Profile Picture')),
                   ],
                 ),

@@ -69,7 +69,7 @@ class TProductMetaData extends StatelessWidget {
             TCircularImage(
               image: TImages.shoes,
               width: 32,
-              hight: 32,
+              height: 32,
               overLayColor: dark ? TColors.white : TColors.black,
             ),
             const TBrandTit1ewithVerifiedIcon(

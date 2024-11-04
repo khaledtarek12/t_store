@@ -1,13 +1,17 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:t_store/features/authentication/models/user_model.module.dart';
 import 'package:t_store/utils/exceptions/firebase_auth_exception.dart';
 import 'package:t_store/utils/exceptions/firebase_exception.dart';
 import 'package:t_store/utils/exceptions/format_exception.dart';
 import 'package:t_store/utils/exceptions/platform_exception.dart';
+import 'package:t_store/utils/helpers/firebase_storage.dart';
 
 // Repository Closs for user-related operations.
 class UserRepository extends GetxController {
@@ -116,5 +120,24 @@ class UserRepository extends GetxController {
   }
 
   // Upload any Imagge
+  Future<String> uploadImagge(String path, XFile image) async {
+    try {
+      final storage = await TStorage.getStorageInstance();
+      final ref = storage.ref(path).child(image.name);
+      await ref.putFile(File(image.path));
+      final url = await ref.getDownloadURL();
 
+      return url;
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(code: e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      throw 'somethinq went wrong. Please try again';
+    }
+  }
 }
