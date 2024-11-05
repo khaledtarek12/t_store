@@ -21,8 +21,11 @@ class TSkeletonEffect extends StatelessWidget {
 
     return Skeletonizer(
       enabled: true, // Ensures skeleton effect is active
-      containersColor: dark ? Colors.grey[850]! : Colors.grey[300]!,
-      effect: const ShimmerEffect(),
+      effect: ShimmerEffect(
+        baseColor: dark ? Colors.grey[850]! : Colors.grey[300]!,
+        highlightColor: dark ? Colors.grey[700]! : Colors.grey[100]!,
+      ),
+      enableSwitchAnimation: true,
       child: Container(
         width: width,
         height: height,

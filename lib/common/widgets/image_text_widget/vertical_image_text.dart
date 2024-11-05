@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:t_store/common/widgets/images/t_circular_images.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_function.dart';
@@ -11,11 +12,13 @@ class TVerticallmageText extends StatelessWidget {
     this.textColor = TColors.white,
     this.backGroundColor = TColors.white,
     this.onTap,
+    this.isNetworkImage = true,
   });
 
   final String image, title;
   final Color textColor;
   final Color? backGroundColor;
+  final bool isNetworkImage;
   final void Function()? onTap;
 
   @override
@@ -29,19 +32,15 @@ class TVerticallmageText extends StatelessWidget {
         child: Column(
           children: [
             //Icons
-            Container(
-              width: 56,
-              height: 56,
-              padding: const EdgeInsets.all(TSizes.sm),
-              decoration: BoxDecoration(
-                  color: backGroundColor,
-                  borderRadius: BorderRadius.circular(100)),
-              child: Center(
-                child: Image.asset(image,
-                    fit: BoxFit.cover,
-                    color: dark ? TColors.light : TColors.dark),
-              ),
+            TCircularImage(
+              image: image,
+              fit: BoxFit.fitWidth,
+              padding: TSizes.sm * 1.4,
+              isNetworkImage: isNetworkImage,
+              backgroundColor: backGroundColor,
+              overLayColor: dark ? TColors.light : TColors.dark,
             ),
+
             const SizedBox(height: TSizes.spaceBtwItems / 2),
             //Texts
             SizedBox(

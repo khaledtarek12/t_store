@@ -14,6 +14,7 @@ class TCircularImage extends StatelessWidget {
     this.overLayColor,
     this.fit = BoxFit.cover,
     this.isNetworkImage = false,
+    this.padding = 0,
   });
 
   final double width, height;
@@ -21,6 +22,7 @@ class TCircularImage extends StatelessWidget {
   final Color? backgroundColor;
   final Color? overLayColor;
   final BoxFit fit;
+  final double padding;
   final bool isNetworkImage;
 
   @override
@@ -28,6 +30,7 @@ class TCircularImage extends StatelessWidget {
     return Container(
       width: width,
       height: height,
+      padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         color: backgroundColor ??
             (THelperFunction.isDarkMode(context)

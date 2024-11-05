@@ -51,6 +51,7 @@ class HomeScreen extends StatelessWidget {
                   TImages.promoBanner1,
                   TImages.promoBanner2,
                   TImages.promoBanner3,
+                  TImages.promoBanner4,
                 ]),
 
                 //heading
