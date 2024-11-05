@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:t_store/common/widgets/loading/skeltionizer.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
 class TRoundedlmages extends StatelessWidget {
@@ -26,7 +28,7 @@ class TRoundedlmages extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final bool isNetworkImage;
   final VoidCallback? onPressed;
-  final double? borderRaduis;
+  final double borderRaduis;
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +39,26 @@ class TRoundedlmages extends StatelessWidget {
         height: hight,
         padding: padding,
         decoration: BoxDecoration(
-            border: border,
-            color: backgroundColor,
-            borderRadius: BorderRadius.circular(borderRaduis!)),
+          border: border,
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(borderRaduis),
+        ),
         child: ClipRRect(
           borderRadius: applayImageRaduis
-              ? BorderRadius.circular(borderRaduis!)
+              ? BorderRadius.circular(borderRaduis)
               : BorderRadius.zero,
           child: isNetworkImage
-              ? Image.network(imageUrl, fit: fit)
+              ? CachedNetworkImage(
+                  imageUrl: imageUrl,
+                  fit: BoxFit.contain,
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  progressIndicatorBuilder: (context, url, progress) =>
+                      TSkeletonEffect(
+                    width: double.infinity, // Use specified width or default
+                    height: 190, // Use specified height or default
+                    radius: borderRaduis,
+                  ),
+                )
               : Image.asset(imageUrl, fit: fit),
         ),
       ),

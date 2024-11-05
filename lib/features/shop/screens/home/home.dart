@@ -9,8 +9,6 @@ import 'package:t_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:t_store/features/shop/screens/home/widgets/home_categroy.dart';
 import 'package:t_store/common/widgets/products/product_cards/product_cart_virtical.dart';
 import 'package:t_store/features/shop/screens/home/widgets/promo_slider.dart';
-import 'package:t_store/navigation_menu.dart';
-import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,11 +16,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = NavigationController.instance;
 
     return Scaffold(
       body: SingleChildScrollView(
-        controller: controller.scrollController,
         child: Column(
           children: [
             const TPrimaryHeaderContainer(
@@ -47,12 +43,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: TSizes.spaceBtwItems),
                 //promo slider
-                const TpromoSlider(banners: [
-                  TImages.promoBanner1,
-                  TImages.promoBanner2,
-                  TImages.promoBanner3,
-                  TImages.promoBanner4,
-                ]),
+                const TpromoSlider(),
 
                 //heading
                 Padding(

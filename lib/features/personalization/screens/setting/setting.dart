@@ -9,7 +9,6 @@ import 'package:t_store/common/widgets/texts/seaction_heading.dart';
 import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:t_store/features/personalization/screens/address/address.dart';
 import 'package:t_store/features/shop/screens/order/order.dart';
-import 'package:t_store/navigation_menu.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
@@ -18,11 +17,10 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = NavigationController.instance;
     final logoutController = AuthenticationRepository.istance;
     return Scaffold(
       body: SingleChildScrollView(
-        controller: controller.scrollController,
+      
         child: Column(
           children: [
             ///...Header

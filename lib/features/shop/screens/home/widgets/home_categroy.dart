@@ -41,27 +41,28 @@ class THomeCategroy extends StatelessWidget {
                       .apply(color: Colors.white),
                 ),
               );
-            }
-            return Skeletonizer(
-              enabled: controller.isLoading.value,
-              child: SizedBox(
-                height: 80,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: controller.featuredCateogries.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    final category = controller.featuredCateogries[index];
-                    return TVerticallmageText(
-                      image: category.image,
-                      title: category.name,
-                      backGroundColor: (dark ? TColors.dark : TColors.white),
-                      onTap: () => Get.to(() => const SubCategoriesScreen()),
-                    );
-                  },
+            } else {
+              return Skeletonizer(
+                enabled: controller.isLoading.value,
+                child: SizedBox(
+                  height: 80,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: controller.featuredCateogries.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      final category = controller.featuredCateogries[index];
+                      return TVerticallmageText(
+                        image: category.image,
+                        title: category.name,
+                        backGroundColor: (dark ? TColors.dark : TColors.white),
+                        onTap: () => Get.to(() => const SubCategoriesScreen()),
+                      );
+                    },
+                  ),
                 ),
-              ),
-            );
+              );
+            }
           }),
         ],
       ),

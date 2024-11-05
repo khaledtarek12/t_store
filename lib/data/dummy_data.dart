@@ -1,38 +1,28 @@
+import 'package:t_store/features/shop/models/banner_model.module.dart';
 import 'package:t_store/features/shop/models/category_model.module.dart';
+import 'package:t_store/routes/routes.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 
 class TDummyData {
   // --- Banners
-  // static final List<BannerModel> banners = [
-  //   BannerModel(
-  //       imageUrl: TImages.promoBanner1,
-  //       targetScreen: TRoutes.order,
-  //       active: false),
-  //   BannerModel(
-  //       imageUrl: TImages.promoBanner2,
-  //       targetScreen: TRoutes.cart,
-  //       active: true),
-  //   BannerModel(
-  //       imageUrl: TImages.promoBanner3,
-  //       targetScreen: TRoutes.favourites,
-  //       active: true),
-  //   BannerModel(
-  //       imageUrl: TImages.promoBanner4,
-  //       targetScreen: TRoutes.search,
-  //       active: true),
-  //   BannerModel(
-  //       imageUrl: TImages.promoBanner5,
-  //       targetScreen: TRoutes.settings,
-  //       active: true),
-  //   BannerModel(
-  //       imageUrl: TImages.promoBanner6,
-  //       targetScreen: TRoutes.userAddress,
-  //       active: true),
-  //   BannerModel(
-  //       imageUrl: TImages.promoBanner8,
-  //       targetScreen: TRoutes.checkout,
-  //       active: false),
-  // ];
+  static final List<BannerModel> banners = [
+    BannerModel(
+        imageUrl: TImages.promoBanner1,
+        targetScreen: TRoutes.order,
+        active: false),
+    BannerModel(
+        imageUrl: TImages.promoBanner2,
+        targetScreen: TRoutes.cart,
+        active: true),
+    BannerModel(
+        imageUrl: TImages.promoBanner3,
+        targetScreen: TRoutes.favourites,
+        active: true),
+    BannerModel(
+        imageUrl: TImages.promoBanner4,
+        targetScreen: TRoutes.search,
+        active: true),
+  ];
 
   // --- User
   // static final UserModel user = UserModel(
