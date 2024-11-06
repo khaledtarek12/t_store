@@ -8,6 +8,7 @@ import 'package:t_store/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
 import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:t_store/features/personalization/screens/address/address.dart';
+import 'package:t_store/features/personalization/screens/setting/upload_data.dart';
 import 'package:t_store/features/shop/screens/order/order.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
@@ -20,7 +21,6 @@ class SettingScreen extends StatelessWidget {
     final logoutController = AuthenticationRepository.istance;
     return Scaffold(
       body: SingleChildScrollView(
-      
         child: Column(
           children: [
             ///...Header
@@ -102,10 +102,11 @@ class SettingScreen extends StatelessWidget {
                   const TSectionHeading(
                       title: 'App Settings', showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwItems),
-                  const TSettingsMenuTile(
+                  TSettingsMenuTile(
                     icon: Iconsax.document_upload,
                     title: 'Load Data',
                     subTitle: 'Upload Data to your Cloud Firebase',
+                    onTap: () => Get.to(() => const UploadDataScreen()),
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.location,
