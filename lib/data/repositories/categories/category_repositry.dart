@@ -3,8 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:t_store/data/services/firebase_storage_service.service.dart';
 import 'package:t_store/features/shop/models/category_model.module.dart';
+import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/exceptions/firebase_exception.dart';
 import 'package:t_store/utils/exceptions/platform_exception.dart';
+import 'package:t_store/utils/popups/full_screen_loader.dart';
 
 class CategoryRepositry extends GetxController {
   static CategoryRepositry get instance => Get.find();
@@ -35,6 +37,7 @@ class CategoryRepositry extends GetxController {
   // Upload Categories to the Cloud Firebase
   Future<void> uploadDummyData(List<CategoryModel> categories) async {
     try {
+      TFullScreenLoader.openLoadingDialog('Uploading Data', TImages.loading);
       // Upload all the Categories along with their Images
       final storage = Get.put(TFirebaseStorageService());
 
@@ -61,7 +64,9 @@ class CategoryRepositry extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformException(code: e.code).message;
     } catch (e) {
-      throw 'somethinq went wrong. Please try again';
+      throw 'somethinq went wrong. Please try again : $e';
+    } finally {
+      TFullScreenLoader.stopLoading();
     }
   }
 }

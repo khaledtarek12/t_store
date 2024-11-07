@@ -3,6 +3,9 @@ import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/appbar/custom_appbar.dart';
 import 'package:t_store/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
+import 'package:t_store/data/dummy_data.dart';
+import 'package:t_store/data/repositories/categories/category_repositry.dart';
+import 'package:t_store/data/repositories/product/product_repositry.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
@@ -11,6 +14,8 @@ class UploadDataScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final product = ProductRepositry.instance;
+    final category = CategoryRepositry.instance;
     return Scaffold(
       appBar: const TAppbar(showBackArrow: true, title: Text('Upload Data')),
       body: SingleChildScrollView(
@@ -30,7 +35,8 @@ class UploadDataScreen extends StatelessWidget {
                   icon: Iconsax.category,
                   title: 'Upload Categories',
                   trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () =>
+                          category.uploadDummyData(TDummyData.categories),
                       icon: const Icon(Iconsax.arrow_circle_up3,
                           size: 28, color: TColors.primary))),
               const SizedBox(height: TSizes.spaceBtwItems),
@@ -48,7 +54,8 @@ class UploadDataScreen extends StatelessWidget {
                   icon: Iconsax.shopping_cart,
                   title: 'Upload Product',
                   trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () =>
+                          product.uploadDummyData(TDummyData.products),
                       icon: const Icon(Iconsax.arrow_circle_up3,
                           size: 28, color: TColors.primary))),
               const SizedBox(height: TSizes.spaceBtwItems),

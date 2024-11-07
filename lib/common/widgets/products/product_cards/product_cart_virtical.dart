@@ -88,16 +88,13 @@ class TProductCartVertical extends StatelessWidget {
             const SizedBox(height: TSizes.spaceBtwItems / 2),
 
             //Details
-            Padding(
-              padding: const EdgeInsets.only(left: TSizes.sm),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TProductTitleText(text: product!.title, smallSize: true),
-                  const SizedBox(height: TSizes.spaceBtwItems / 2),
-                  TBrandTit1ewithVerifiedIcon(title: product!.brand!.name),
-                ],
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TProductTitleText(text: product!.title, smallSize: true),
+                const SizedBox(height: TSizes.spaceBtwItems / 2),
+                TBrandTit1ewithVerifiedIcon(title: product!.brand!.name),
+              ],
             ),
 
             const Spacer(),
