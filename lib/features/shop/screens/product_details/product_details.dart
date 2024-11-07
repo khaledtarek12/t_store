@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
+import 'package:t_store/features/shop/models/product_model.module.dart';
 import 'package:t_store/features/shop/screens/product_details/widgets/bottom_add_to_cart_wigdet.dart';
 import 'package:t_store/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:t_store/features/shop/screens/product_details/widgets/product_datails_image_slider.dart';
@@ -14,7 +15,9 @@ import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_function.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+  const ProductDetailsScreen({super.key, this.product});
+
+  final ProductModel? product;
 
   @override
   Widget build(BuildContext context) {

@@ -3,6 +3,10 @@ class TImages {
   static const String lightAppLogo = 'assets/logos/t_shirt_logo_white.png';
   static const String darkAppLogo = 'assets/logos/t_shirt_logo_balck.png';
 
+  // product logos
+  static const String nikeLogo = 'assets/logos/nikelogo.png';
+  static const String zaraLogo = 'assets/logos/Zara_Logo.png';
+
   static const String onboardingImage1 =
       'assets/images/on_boarding_images/onboarding1.gif';
   static const String onboardingImage2 =
@@ -146,4 +150,24 @@ class TImages {
       'assets/images/product_cart/bedroom_wardrobes-removebg-preview.png';
   static const String productImage35 =
       'assets/images/product_cart/kitchen_counter-removebg-preview.png';
+  static const String productImage36 =
+      'assets/images/product_cart/blueTshirt.png';
+  static const String productImage37 =
+      'assets/images/product_cart/redTshirt.png';
+  static const String productImage38 =
+      'assets/images/product_cart/LeatherredJacket.png';
+  static const String productImage39 =
+      'assets/images/product_cart/LeathergreenJacket.png';
+  static const String productImage40 =
+      'assets/images/product_cart/LeatherblackJacket.png';
+  static const String productImage41 =
+      'assets/images/product_cart/LeatherbrownJacket.png';
+  static const String productImage42 =
+      'assets/images/product_cart/bluecollartshirt.png';
+  static const String productImage43 =
+      'assets/images/product_cart/greencollartshirt.png';
+  static const String productImage44 =
+      'assets/images/product_cart/redcollartshirt.png';
+  static const String productImage45 =
+      'assets/images/product_cart/yellowcollartshirt.png';
 }

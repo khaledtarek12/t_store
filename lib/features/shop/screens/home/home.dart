@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:t_store/common/layouts/grid_layout.dart';
 import 'package:t_store/common/widgets/custom_shapes/container/primary_header_container.dart';
 import 'package:t_store/common/widgets/custom_shapes/container/search_container.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
+import 'package:t_store/features/shop/controllers/product_controller.dart';
 import 'package:t_store/features/shop/screens/all_product/all_prodcut.dart';
 import 'package:t_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:t_store/features/shop/screens/home/widgets/home_categroy.dart';
@@ -16,7 +18,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -57,12 +59,25 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(height: TSizes.spaceBtwItems),
 
                       //popular product
-                      TGridLayout(
-                        mainAxisExtent: 288,
-                        itemCount: 4,
-                        itemBuilder: (context, index) =>
-                            const TProductCartVertical(),
-                      ),
+                      Obx(() {
+                        if (controller.featuredProducts.isEmpty) {
+                          return Center(
+                              child: Text('No Data Found!',
+                                  style:
+                                      Theme.of(context).textTheme.bodyMedium));
+                        }
+                        return Skeletonizer(
+                          enabled: controller.loading.value,
+                          child: TGridLayout(
+                            mainAxisExtent: 288,
+                            itemCount: controller.featuredProducts.length,
+                            itemBuilder: (context, index) =>
+                                TProductCartVertical(
+                              product: controller.featuredProducts[index],
+                            ),
+                          ),
+                        );
+                      }),
                     ],
                   ),
                 ),

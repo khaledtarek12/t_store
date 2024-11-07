@@ -2,6 +2,9 @@ enum TextSizes { small, meduim, large }
 
 enum OrderStatus { processing, shiped, delivered }
 
+
+enum ProductType { single, variable }
+
 enum PaymentMethods {
   paypal,
   googlePlay,
@@ -11,5 +14,5 @@ enum PaymentMethods {
   creditCard,
   payStack,
   razorPay,
-  paytm
+  paytm,
 }
