@@ -52,18 +52,14 @@ class TImages {
   static const String success = 'assets/images/payment_methods/success.gif';
 
   // Products logo
-  static const String sparklingDiamond =
-      'assets/icons/categories/sparklingDiamond.png';
-  static const String bowlingWhite =
-      'assets/icons/categories/bowling_white.png';
-  static const String clothIcon = 'assets/images/categories/tailorsDummy.png';
-  static const String woodenToyCar =
-      'assets/images/categories/woodenToyCar.png';
-  static const String bowlingDark = 'assets/images/categories/bowling_dark.png';
-  static const String diningChair = 'assets/images/categories/diningChair.png';
+  static const String jewerly = 'assets/images/categories/jewerly.png';
+  static const String sports = 'assets/images/categories/sports.png';
+  static const String clothes = 'assets/images/categories/clothes.png';
+  static const String cars = 'assets/images/categories/cars.png';
+  static const String furniture = 'assets/images/categories/furniture.png';
   static const String cosmestics = 'assets/images/categories/cosmestics.png';
-  static const String smartphone = 'assets/images/categories/smartphone.png';
-  static const String dogHeart = 'assets/images/categories/dogHeart.png';
+  static const String electronics = 'assets/images/categories/electronics.png';
+  static const String animals = 'assets/images/categories/Animals.png';
   static const String shoes = 'assets/images/categories/shoes.png';
 
   //banners

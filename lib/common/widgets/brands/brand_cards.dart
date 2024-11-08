@@ -10,7 +10,9 @@ import 'package:t_store/utils/helpers/helper_function.dart';
 
 class TBrandCard extends StatelessWidget {
   const TBrandCard({
-    super.key, required this.showBoder,  this.onTap,
+    super.key,
+    required this.showBoder,
+    this.onTap,
   });
 
   final bool showBoder;
@@ -31,7 +33,7 @@ class TBrandCard extends StatelessWidget {
             //// Iocn
             Flexible(
               child: TCircularImage(
-                  image: TImages.clothIcon,
+                  image: TImages.clothes,
                   backgroundColor: Colors.transparent,
                   overLayColor: isDark ? TColors.white : TColors.black),
             ),

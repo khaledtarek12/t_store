@@ -109,93 +109,87 @@ class TDummyData {
   // --- List of all Categories
   static final List<CategoryModel> categories = [
     CategoryModel(
-        id: '1', name: TImages.bowlingWhite, image: 'Sports', isFeatured: true),
+        id: '1', image: TImages.sports, name: 'Sports', isFeatured: true),
     CategoryModel(
         id: '2',
-        name: TImages.smartphone,
-        image: 'Electronics',
+        image: TImages.electronics,
+        name: 'Electronics',
         isFeatured: true),
     CategoryModel(
-        id: '3', name: TImages.clothIcon, image: 'Clothes', isFeatured: true),
+        id: '3', image: TImages.clothes, name: 'Clothes', isFeatured: true),
     CategoryModel(
-        id: '4', name: TImages.dogHeart, image: 'Animals', isFeatured: true),
+        id: '4', image: TImages.animals, name: 'Animals', isFeatured: true),
     CategoryModel(
-        id: '5',
-        name: TImages.diningChair,
-        image: 'Furniture',
-        isFeatured: true),
+        id: '5', image: TImages.furniture, name: 'Furniture', isFeatured: true),
     CategoryModel(
-        id: '6', name: TImages.shoes, image: 'Shoes', isFeatured: true),
+        id: '6', image: TImages.shoes, name: 'Shoes', isFeatured: true),
     CategoryModel(
         id: '7',
-        name: TImages.cosmestics,
-        image: 'Cosmetics',
+        image: TImages.cosmestics,
+        name: 'Cosmetics',
         isFeatured: true),
     CategoryModel(
-        id: '14',
-        name: TImages.sparklingDiamond,
-        image: 'Jewelery',
-        isFeatured: true),
+        id: '14', image: TImages.jewerly, name: 'Jewelery', isFeatured: true),
 
     // subcotegories Sports
     CategoryModel(
         id: '8',
-        name: TImages.bowlingDark,
-        image: 'Sports Shoes',
+        image: TImages.sports,
+        name: 'Sports Shoes',
         parentId: '1',
         isFeatured: false),
     CategoryModel(
         id: '9',
-        name: TImages.bowlingDark,
-        image: 'Track Suits',
+        image: TImages.sports,
+        name: 'Track Suits',
         parentId: '1',
         isFeatured: false),
     CategoryModel(
         id: '10',
-        name: TImages.bowlingDark,
-        image: 'Sports Equipments',
+        image: TImages.sports,
+        name: 'Sports Equipments',
         parentId: '1',
         isFeatured: false),
 
     // subcotegories Furniture
     CategoryModel(
         id: '11',
-        name: TImages.diningChair,
-        image: 'Bedroom Furniture',
+        image: TImages.furniture,
+        name: 'Bedroom Furniture',
         parentId: '5',
         isFeatured: false),
     CategoryModel(
         id: '12',
-        name: TImages.diningChair,
-        image: 'Kitchen Furniture',
+        image: TImages.furniture,
+        name: 'Kitchen Furniture',
         parentId: '5',
         isFeatured: false),
     CategoryModel(
         id: '13',
-        name: TImages.diningChair,
-        image: 'Office Furniture',
+        image: TImages.furniture,
+        name: 'Office Furniture',
         parentId: '5',
         isFeatured: false),
 
     // subcotegories Electronics
     CategoryModel(
         id: '14',
-        name: TImages.smartphone,
+        image: TImages.electronics,
         parentId: '2',
-        image: 'Laptop',
+        name: 'Laptop',
         isFeatured: false),
     CategoryModel(
         id: '15',
-        name: TImages.smartphone,
-        image: 'Mobile',
+        image: TImages.electronics,
+        name: 'Mobile',
         parentId: '2',
         isFeatured: false),
 
     // subcotegories Clothes
     CategoryModel(
         id: '16',
-        name: TImages.clothIcon,
-        image: 'Shirts',
+        image: TImages.clothes,
+        name: 'Shirts',
         parentId: '3',
         isFeatured: false),
   ];
