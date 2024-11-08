@@ -7,7 +7,7 @@ import 'package:t_store/utils/exceptions/firebase_exception.dart';
 import 'package:t_store/utils/exceptions/platform_exception.dart';
 
 class BannersRepositry extends GetxController {
-  static BannersRepositry get instacne => Get.find();
+  static BannersRepositry get instance => Get.find();
 
   // variables
   final dataBase = FirebaseFirestore.instance;
@@ -33,7 +33,7 @@ class BannersRepositry extends GetxController {
   }
 
   /// Upload Banners to the Cloud Firebase
-   Future<void> uploadDummyData(List<BannerModel> banners) async {
+  Future<void> uploadDummyData(List<BannerModel> banners) async {
     try {
       // Upload all the Categories along with their Images
       final storage = Get.put(TFirebaseStorageService());
@@ -51,10 +51,7 @@ class BannersRepositry extends GetxController {
         banner.imageUrl = url;
 
         // Store Category in Firestore
-        await dataBase
-            .collection('Banners')
-            .doc()
-            .set(banner.toJson());
+        await dataBase.collection('Banners').doc().set(banner.toJson());
       }
     } on FirebaseException catch (e) {
       throw TFirebaseException(code: e.code).message;

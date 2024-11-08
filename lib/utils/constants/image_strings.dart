@@ -56,14 +56,15 @@ class TImages {
       'assets/icons/categories/sparklingDiamond.png';
   static const String bowlingWhite =
       'assets/icons/categories/bowling_white.png';
-  static const String clothIcon = 'assets/icons/categories/tailorsDummy.png';
-  static const String woodenToyCar = 'assets/icons/categories/woodenToyCar.png';
-  static const String bowlingDark = 'assets/icons/categories/bowling_dark.png';
-  static const String diningChair = 'assets/icons/categories/diningChair.png';
-  static const String cosmestics = 'assets/icons/categories/cosmestics.png';
-  static const String smartphone = 'assets/icons/categories/smartphone.png';
-  static const String dogHeart = 'assets/icons/categories/dogHeart.png';
-  static const String shoes = 'assets/icons/categories/shoes.png';
+  static const String clothIcon = 'assets/images/categories/tailorsDummy.png';
+  static const String woodenToyCar =
+      'assets/images/categories/woodenToyCar.png';
+  static const String bowlingDark = 'assets/images/categories/bowling_dark.png';
+  static const String diningChair = 'assets/images/categories/diningChair.png';
+  static const String cosmestics = 'assets/images/categories/cosmestics.png';
+  static const String smartphone = 'assets/images/categories/smartphone.png';
+  static const String dogHeart = 'assets/images/categories/dogHeart.png';
+  static const String shoes = 'assets/images/categories/shoes.png';
 
   //banners
   static const String promoBanner1 = 'assets/images/banners/bromoBanner1.png';

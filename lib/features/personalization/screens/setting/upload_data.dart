@@ -4,6 +4,7 @@ import 'package:t_store/common/widgets/appbar/custom_appbar.dart';
 import 'package:t_store/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
 import 'package:t_store/data/dummy_data.dart';
+import 'package:t_store/data/repositories/banners/banners_repositry.dart';
 import 'package:t_store/data/repositories/categories/category_repositry.dart';
 import 'package:t_store/data/repositories/product/product_repositry.dart';
 import 'package:t_store/utils/constants/colors.dart';
@@ -16,6 +17,7 @@ class UploadDataScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final product = ProductRepositry.instance;
     final category = CategoryRepositry.instance;
+    final banner = BannersRepositry.instance;
     return Scaffold(
       appBar: const TAppbar(showBackArrow: true, title: Text('Upload Data')),
       body: SingleChildScrollView(
@@ -64,7 +66,8 @@ class UploadDataScreen extends StatelessWidget {
                   icon: Iconsax.image,
                   title: 'Upload Banners',
                   trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () =>
+                          banner.uploadDummyData(TDummyData.banners),
                       icon: const Icon(Iconsax.arrow_circle_up3,
                           size: 28, color: TColors.primary))),
               const SizedBox(height: TSizes.spaceBtwScetions),

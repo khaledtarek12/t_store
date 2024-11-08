@@ -34,7 +34,9 @@ class TpromoSlider extends StatelessWidget {
                 ),
                 items: controller.banners
                     .map((banner) => TRoundedlmages(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
                           imageUrl: banner.imageUrl,
+                          fit: BoxFit.contain,
                           isNetworkImage: true,
                           onPressed: () => Get.toNamed(banner.targetScreen),
                         ))

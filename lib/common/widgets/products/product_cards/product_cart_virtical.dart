@@ -18,15 +18,15 @@ import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_function.dart';
 
 class TProductCartVertical extends StatelessWidget {
-  const TProductCartVertical({super.key, this.product});
+  const TProductCartVertical({super.key, required this.product});
 
-  final ProductModel? product;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final controller = ProductController.instance;
     final salePercantage =
-        controller.calculateSalesPercentage(product!.price, product!.salePrice);
+        controller.calculateSalesPercentage(product.price, product.salePrice);
     final dark = THelperFunction.isDarkMode(context);
     return GestureDetector(
       onTap: () => Get.to(() => ProductDetailsScreen(product: product)),
@@ -53,7 +53,7 @@ class TProductCartVertical extends StatelessWidget {
                   //Image
                   Center(
                     child: TRoundedlmages(
-                        imageUrl: product!.thumbanil,
+                        imageUrl: product.thumbanil,
                         applayImageRaduis: true,
                         isNetworkImage: true),
                   ),
@@ -91,9 +91,9 @@ class TProductCartVertical extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TProductTitleText(text: product!.title, smallSize: true),
+                TProductTitleText(text: product.title, smallSize: true),
                 const SizedBox(height: TSizes.spaceBtwItems / 2),
-                TBrandTit1ewithVerifiedIcon(title: product!.brand!.name),
+                TBrandTit1ewithVerifiedIcon(title: product.brand!.name),
               ],
             ),
 
@@ -107,13 +107,13 @@ class TProductCartVertical extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (product!.productType ==
+                      if (product.productType ==
                               ProductType.single.toString() &&
-                          product!.salePrice > 0)
+                          product.salePrice > 0)
                         Padding(
                             padding: const EdgeInsets.only(left: TSizes.sm),
                             child: Text(
-                              product!.price.toString(),
+                              product.price.toString(),
                               style: Theme.of(context)
                                   .textTheme
                                   .labelMedium!
@@ -125,7 +125,7 @@ class TProductCartVertical extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: TSizes.sm),
                         child: TProductPriceText(
-                            price: controller.getProductPrice(product!)),
+                            price: controller.getProductPrice(product)),
                       ),
                     ],
                   ),

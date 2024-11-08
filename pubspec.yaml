@@ -90,7 +90,7 @@ flutter:
     - assets/images/payment_methods/
     - assets/images/verify_email/
     - assets/images/product_cart/
-    - assets/icons/categories/
+    - assets/images/categories/
     - assets/images/loading/
     - assets/images/banners/
     - assets/icons/brands/

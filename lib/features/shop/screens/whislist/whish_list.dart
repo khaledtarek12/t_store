@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:t_store/common/layouts/grid_layout.dart';
 import 'package:t_store/common/widgets/appbar/custom_appbar.dart';
 import 'package:t_store/common/widgets/icons/circular_icons.dart';
 import 'package:t_store/common/widgets/products/product_cards/product_cart_virtical.dart';
-import 'package:t_store/features/shop/models/product_model.module.dart';
+import 'package:t_store/features/shop/controllers/product_controller.dart';
 import 'package:t_store/features/shop/screens/home/home.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
@@ -14,6 +15,7 @@ class WhishListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
     return Scaffold(
       appBar: TAppbar(
           title: Text('Whislist',
@@ -28,11 +30,22 @@ class WhishListScreen extends StatelessWidget {
           padding: const EdgeInsets.all(TSizes.defultSpace),
           child: Column(
             children: [
-              TGridLayout(
-                itemCount: 6,
-                itemBuilder: (_, index) =>
-                    TProductCartVertical(product: ProductModel.empty()),
-              )
+              Obx(() {
+                if (controller.featuredProducts.isEmpty) {
+                  return Center(
+                      child: Text('No Data Found!',
+                          style: Theme.of(context).textTheme.bodyMedium));
+                }
+                return Skeletonizer(
+                  enabled: controller.loading.value,
+                  child: TGridLayout(
+                    itemCount: controller.featuredProducts.length,
+                    itemBuilder: (context, index) => TProductCartVertical(
+                      product: controller.featuredProducts[index],
+                    ),
+                  ),
+                );
+              }),
             ],
           ),
         ),

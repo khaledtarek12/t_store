@@ -69,7 +69,6 @@ class HomeScreen extends StatelessWidget {
                         return Skeletonizer(
                           enabled: controller.loading.value,
                           child: TGridLayout(
-                            mainAxisExtent: 288,
                             itemCount: controller.featuredProducts.length,
                             itemBuilder: (context, index) =>
                                 TProductCartVertical(
