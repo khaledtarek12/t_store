@@ -7,7 +7,6 @@ import 'package:t_store/common/widgets/products/product_cards/product_cart_virti
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
 import 'package:t_store/features/shop/controllers/product_controller.dart';
 import 'package:t_store/features/shop/models/category_model.module.dart';
-import 'package:t_store/features/shop/models/product_model.module.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
