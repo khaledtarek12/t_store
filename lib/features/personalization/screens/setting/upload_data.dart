@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/appbar/custom_appbar.dart';
 import 'package:t_store/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
 import 'package:t_store/data/dummy_data.dart';
 import 'package:t_store/data/repositories/banners/banners_repositry.dart';
+import 'package:t_store/data/repositories/brands/brand_repositry.dart';
 import 'package:t_store/data/repositories/categories/category_repositry.dart';
 import 'package:t_store/data/repositories/product/product_repositry.dart';
 import 'package:t_store/utils/constants/colors.dart';
@@ -16,6 +18,7 @@ class UploadDataScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final product = ProductRepositry.instance;
+    final brand = Get.put(BrandRepositry());
     final category = CategoryRepositry.instance;
     final banner = BannersRepositry.instance;
     return Scaffold(
@@ -47,7 +50,7 @@ class UploadDataScreen extends StatelessWidget {
                   icon: Iconsax.shop,
                   title: 'Upload Brands',
                   trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () => brand.uploadDummyData(TDummyData.brands),
                       icon: const Icon(Iconsax.arrow_circle_up3,
                           size: 28, color: TColors.primary))),
               const SizedBox(height: TSizes.spaceBtwItems),

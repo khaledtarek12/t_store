@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/common/layouts/grid_layout.dart';
+import 'package:t_store/common/shammer/brand_shammer.dart';
 import 'package:t_store/common/widgets/appbar/custom_appbar.dart';
 import 'package:t_store/common/widgets/appbar/tabar.dart';
 import 'package:t_store/common/widgets/custom_shapes/container/search_container.dart';
 import 'package:t_store/common/widgets/products/cart/cart_menu_cion.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
 import 'package:t_store/common/widgets/brands/brand_cards.dart';
+import 'package:t_store/features/shop/controllers/brand_controller.dart';
 import 'package:t_store/features/shop/controllers/category_controller.dart';
 import 'package:t_store/features/shop/screens/barnds/all_prands.dart';
 import 'package:t_store/features/shop/screens/store/widgets/category_tab.dart';
@@ -20,6 +22,7 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categroies = CategoryController.instance.featuredCateogries;
+    final brandController = Get.put(BrandController());
     return DefaultTabController(
       initialIndex: 0,
       length: categroies.length,
@@ -64,12 +67,32 @@ class StoreScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
-                        TGridLayout(
-                          itemCount: 4,
-                          mainAxisExtent: 80,
-                          itemBuilder: (p0, p1) =>
-                              const TBrandCard(showBoder: true),
-                        )
+                        Obx(() {
+                          if (brandController.isLoading.value) {
+                            return const TBrandShammer();
+                          }
+
+                          if (brandController.featureBrand.isEmpty) {
+                            return Center(
+                              child: Text(
+                                'No Data Found!',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .apply(color: Colors.white),
+                              ),
+                            );
+                          }
+
+                          return TGridLayout(
+                            itemCount: brandController.featureBrand.length,
+                            mainAxisExtent: 80,
+                            itemBuilder: (_, index) {
+                              final brand = brandController.featureBrand[index];
+                              return TBrandCard(showBoder: true, brand: brand);
+                            },
+                          );
+                        })
                       ],
                     ),
                   ),

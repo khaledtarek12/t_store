@@ -30,14 +30,14 @@ class TCategoryTab extends StatelessWidget {
             child: Column(
               children: [
                 //...Brands
-                const TBrandShowcase(
+                const TBrandShowCase(
                   images: [
                     TImages.productImage3,
                     TImages.productImage2,
                     TImages.productImage1,
                   ],
                 ),
-                const TBrandShowcase(
+                const TBrandShowCase(
                   images: [
                     TImages.productImage3,
                     TImages.productImage2,

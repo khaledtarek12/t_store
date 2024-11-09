@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:t_store/common/widgets/appbar/custom_appbar.dart';
 import 'package:t_store/common/widgets/brands/brand_cards.dart';
 import 'package:t_store/common/widgets/products/sortable/sortable_product.dart';
+import 'package:t_store/features/shop/models/brand_model.module.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
 class BrandsProductScreen extends StatelessWidget {
@@ -9,15 +10,15 @@ class BrandsProductScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: TAppbar(title: Text('Nike')),
+    return  Scaffold(
+      appBar: const TAppbar(title: Text('Nike')),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(TSizes.defultSpace),
+        padding: const EdgeInsets.all(TSizes.defultSpace),
         child: Column(
           children: [
-            TBrandCard(showBoder: true),
-            SizedBox(height: TSizes.spaceBtwScetions),
-            TSortableProduct(
+            TBrandCard(showBoder: true, brand: BrandModel.empty(),),
+            const SizedBox(height: TSizes.spaceBtwScetions),
+            const TSortableProduct(
               products: [],
             ),
           ],

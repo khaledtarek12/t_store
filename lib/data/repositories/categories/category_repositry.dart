@@ -58,6 +58,8 @@ class CategoryRepositry extends GetxController {
             .collection('Categories')
             .doc(category.id)
             .set(category.toJson());
+
+        TFullScreenLoader.stopLoading();
       }
     } on FirebaseException catch (e) {
       throw TFirebaseException(code: e.code).message;
@@ -65,8 +67,6 @@ class CategoryRepositry extends GetxController {
       throw TPlatformException(code: e.code).message;
     } catch (e) {
       throw 'somethinq went wrong. Please try again : $e';
-    } finally {
-      TFullScreenLoader.stopLoading();
     }
   }
 }
