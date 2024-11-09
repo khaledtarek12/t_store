@@ -13,11 +13,13 @@ class BrandsProductScreen extends StatelessWidget {
       appBar: TAppbar(title: Text('Nike')),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(TSizes.defultSpace),
-        child:  Column(
+        child: Column(
           children: [
             TBrandCard(showBoder: true),
             SizedBox(height: TSizes.spaceBtwScetions),
-            TSortableProduct(),
+            TSortableProduct(
+              products: [],
+            ),
           ],
         ),
       ),

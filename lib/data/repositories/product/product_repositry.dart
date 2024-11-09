@@ -33,6 +33,39 @@ class ProductRepositry extends GetxController {
     }
   }
 
+  /// Get limited featured products
+  Future<List<ProductModel>> getAllFeaturedProducts() async {
+    try {
+      final snapShot = await dataBase
+          .collection('Products')
+          .where('IsFeatured', isEqualTo: true)
+          .get();
+      return snapShot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      throw 'somethinq went wrong. Please try again';
+    }
+  }
+
+  Future<List<ProductModel>> fetchProductsByQuery(Query query) async {
+    try {
+      final querySnapshot = await query.get();
+      final List<ProductModel> productList = querySnapshot.docs
+          .map((doc) => ProductModel.fromQuerySnapshot(doc))
+          .toList();
+      return productList;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      throw 'somethinq went wrong. Please try again';
+    }
+  }
+
   /// Upload dummy data to the Cloud Firebase
   Future<void> uploadDummyData(List<ProductModel> products) async {
     // Upload all the products along with their images
@@ -99,6 +132,6 @@ class ProductRepositry extends GetxController {
       throw TPlatformException(code: e.code).message;
     } catch (e) {
       throw 'somethinq went wrong. Please try again';
-    } 
+    }
   }
 }

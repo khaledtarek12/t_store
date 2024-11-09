@@ -53,18 +53,20 @@ class HomeScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       TSectionHeading(
-                          title: 'Popular Products',
-                          onPressed: () =>
-                              Get.to(() => const AllProdcutScreen())),
+                        title: 'Popular Products',
+                        onPressed: () => Get.to(
+                          () => AllProdcutScreen(
+                            title: 'Popular Products',
+                            futureMethod: controller.fetchAllFeaturedProducts(),
+                          ),
+                        ),
+                      ),
                       const SizedBox(height: TSizes.spaceBtwItems),
 
                       //popular product
                       Obx(() {
                         if (controller.loading.value) {
-                          return TGridLayout(
-                              itemCount: controller.featuredProducts.length,
-                              itemBuilder: (context, index) =>
-                                  const TProductCartVerticalShimmer());
+                          return const TVerticalProductShimmer();
                         }
 
                         if (controller.featuredProducts.isEmpty) {

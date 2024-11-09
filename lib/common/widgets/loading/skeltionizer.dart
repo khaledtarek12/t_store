@@ -8,7 +8,7 @@ class TShammerEffect extends StatelessWidget {
     super.key,
     required this.width,
     required this.height,
-    this.radius = 50,
+    this.radius = 12,
     this.color,
   });
 

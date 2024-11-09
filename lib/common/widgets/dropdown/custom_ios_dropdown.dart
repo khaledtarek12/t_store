@@ -3,19 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store/utils/constants/colors.dart';
 
+import '../../../features/shop/controllers/all_product_contrroller.dart';
+
 class DropdownWithContextMenu extends StatelessWidget {
+  DropdownWithContextMenu({super.key, required this.sortController});
+
   final List<String> options = [
     'Name',
     'Higher Price',
     'Lower Price',
     'Sale',
-    'Newest',
-    'Popularity'
   ];
-  final ValueNotifier<String> selectedValueNotifier =
-      ValueNotifier<String>('Name');
-
-  DropdownWithContextMenu({super.key});
+  final AllProductController sortController;
 
   void _showCupertinoActionSheet(BuildContext context) {
     showCupertinoModalPopup(
@@ -32,7 +31,7 @@ class DropdownWithContextMenu extends StatelessWidget {
                   .apply(color: TColors.primary),
             ),
             onPressed: () {
-              selectedValueNotifier.value = option;
+              sortController.sortProducts(option);
               Navigator.pop(context);
             },
           );
@@ -61,27 +60,16 @@ class DropdownWithContextMenu extends StatelessWidget {
         border: Border.all(color: Colors.grey, width: 1.5),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: CupertinoContextMenu(
-        actions: options.map((option) {
-          return CupertinoContextMenuAction(
-            child: Text(option),
-            onPressed: () {
-              selectedValueNotifier.value = option;
-              Navigator.pop(context);
-            },
+      child: ValueListenableBuilder<String>(
+        valueListenable: sortController.selectedSortOption,
+        builder: (context, selectedValue, _) {
+          return ListTile(
+            leading: const Icon(Iconsax.sort),
+            title: Text(selectedValue),
+            onTap: () => _showCupertinoActionSheet(context),
+            trailing: const Icon(Icons.arrow_drop_down),
           );
-        }).toList(),
-        child: ValueListenableBuilder<String>(
-          valueListenable: selectedValueNotifier,
-          builder: (context, selectedValue, _) {
-            return ListTile(
-              leading: const Icon(Iconsax.sort),
-              title: Text(selectedValue),
-              onTap: () => _showCupertinoActionSheet(context),
-              trailing: const Icon(Icons.arrow_drop_down),
-            );
-          },
-        ),
+        },
       ),
     );
   }
