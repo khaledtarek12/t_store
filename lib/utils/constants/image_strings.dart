@@ -6,6 +6,14 @@ class TImages {
   // product logos
   static const String nikeLogo = 'assets/logos/nikelogo.png';
   static const String zaraLogo = 'assets/logos/Zara_Logo.png';
+  static const String acerLogo = 'assets/logos/acerlogo.png';
+  static const String adidasLogo = 'assets/logos/AdidasLogo.png';
+  static const String appleLogo = 'assets/logos/applelogo.png';
+  static const String ikeyalogo = 'assets/logos/ikeyalogo.png';
+  static const String jordanLogo = 'assets/logos/jordanlogo.png';
+  static const String kenwoodLogo = 'assets/logos/KenwoodLogo.png';
+  static const String pumaLogo = 'assets/logos/pumalogo.png';
+  static const String smasoungLogo = 'assets/logos/smasounglogo.png';
 
   static const String onboardingImage1 =
       'assets/images/on_boarding_images/onboarding1.gif';
