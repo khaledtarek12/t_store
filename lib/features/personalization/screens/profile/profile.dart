@@ -36,7 +36,7 @@ class ProfileScreen extends StatelessWidget {
                           networklmage.isNotEmpty ? networklmage : TImages.user;
 
                       return controller.imageUploding.value
-                          ? const TSkeletonEffect(
+                          ? const TShammerEffect(
                               width: 80, height: 80, radius: 80)
                           : TCircularImage(
                               image: image,

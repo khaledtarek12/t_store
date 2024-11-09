@@ -46,7 +46,7 @@ class TCircularImage extends StatelessWidget {
                 color: overLayColor,
                 errorWidget: (context, url, error) => const Icon(Icons.error),
                 progressIndicatorBuilder: (context, url, progress) =>
-                    const TSkeletonEffect(width: 55, height: 55, radius: 55),
+                    const TShammerEffect(width: 55, height: 55, radius: 55),
               )
             : Image.asset(
                 image,

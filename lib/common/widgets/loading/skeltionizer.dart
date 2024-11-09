@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:skeletonizer/skeletonizer.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/helpers/helper_function.dart';
 
-class TSkeletonEffect extends StatelessWidget {
-  const TSkeletonEffect({
+class TShammerEffect extends StatelessWidget {
+  const TShammerEffect({
     super.key,
     required this.width,
     required this.height,
@@ -19,13 +19,9 @@ class TSkeletonEffect extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunction.isDarkMode(context);
 
-    return Skeletonizer(
-      enabled: true, // Ensures skeleton effect is active
-      effect: ShimmerEffect(
-        baseColor: dark ? Colors.grey[850]! : Colors.grey[300]!,
-        highlightColor: dark ? Colors.grey[700]! : Colors.grey[100]!,
-      ),
-      enableSwitchAnimation: true,
+    return Shimmer.fromColors(
+      baseColor: dark ? Colors.grey[850]! : Colors.grey[300]!,
+      highlightColor: dark ? Colors.grey[700]! : Colors.grey[100]!,
       child: Container(
         width: width,
         height: height,

@@ -53,7 +53,7 @@ class TRoundedlmages extends StatelessWidget {
                   fit: BoxFit.contain,
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                   progressIndicatorBuilder: (context, url, progress) =>
-                      TSkeletonEffect(
+                      TShammerEffect(
                     width: double.infinity, // Use specified width or default
                     height: 190, // Use specified height or default
                     radius: borderRaduis,

@@ -23,11 +23,11 @@ class TCategoryShammer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //Image
-                  TSkeletonEffect(width: 55, height: 55, radius: 55),
+                  TShammerEffect(width: 55, height: 55, radius: 55),
                   SizedBox(height: TSizes.spaceBtwItems / 2),
 
                   //Text
-                  TSkeletonEffect(width: 55, height: 8)
+                  TShammerEffect(width: 55, height: 8)
                 ],
               ),
           itemCount: itemCount),

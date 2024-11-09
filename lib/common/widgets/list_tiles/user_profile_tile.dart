@@ -22,7 +22,7 @@ class TUserProfileTile extends StatelessWidget {
         final image = networklmage.isNotEmpty ? networklmage : TImages.user;
 
         return controller.imageUploding.value
-            ? const TSkeletonEffect(width: 50, height: 50, radius: 50)
+            ? const TShammerEffect(width: 50, height: 50, radius: 50)
             : TCircularImage(
                 image: image,
                 width: 50,

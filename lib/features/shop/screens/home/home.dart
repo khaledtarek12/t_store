@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:t_store/common/layouts/grid_layout.dart';
+import 'package:t_store/common/shammer/shammer_grid.dart';
 import 'package:t_store/common/widgets/custom_shapes/container/primary_header_container.dart';
 import 'package:t_store/common/widgets/custom_shapes/container/search_container.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
@@ -60,20 +61,23 @@ class HomeScreen extends StatelessWidget {
 
                       //popular product
                       Obx(() {
+                        if (controller.loading.value) {
+                          return TGridLayout(
+                              itemCount: controller.featuredProducts.length,
+                              itemBuilder: (context, index) =>
+                                  const TProductCartVerticalShimmer());
+                        }
+
                         if (controller.featuredProducts.isEmpty) {
                           return Center(
                               child: Text('No Data Found!',
                                   style:
                                       Theme.of(context).textTheme.bodyMedium));
                         }
-                        return Skeletonizer(
-                          enabled: controller.loading.value,
-                          child: TGridLayout(
-                            itemCount: controller.featuredProducts.length,
-                            itemBuilder: (context, index) =>
-                                TProductCartVertical(
-                              product: controller.featuredProducts[index],
-                            ),
+                        return TGridLayout(
+                          itemCount: controller.featuredProducts.length,
+                          itemBuilder: (context, index) => TProductCartVertical(
+                            product: controller.featuredProducts[index],
                           ),
                         );
                       }),
