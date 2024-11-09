@@ -6,7 +6,7 @@ import 'package:t_store/common/layouts/grid_layout.dart';
 import 'package:t_store/common/widgets/appbar/custom_appbar.dart';
 import 'package:t_store/common/widgets/icons/circular_icons.dart';
 import 'package:t_store/common/widgets/products/product_cards/product_cart_virtical.dart';
-import 'package:t_store/features/shop/controllers/product_controller.dart';
+import 'package:t_store/features/shop/controllers/products/product_controller.dart';
 import 'package:t_store/features/shop/screens/home/home.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 

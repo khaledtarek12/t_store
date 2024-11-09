@@ -4,13 +4,16 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 class CustomLoading extends StatelessWidget {
   const CustomLoading({
     super.key,
+    this.loadingColor = Colors.white,
   });
+
+  final Color loadingColor;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: LoadingAnimationWidget.fourRotatingDots(
-          color: Colors.white, size: 80),
+          color: loadingColor, size: 80),
     );
   }
 }

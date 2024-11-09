@@ -11,13 +11,14 @@ import 'package:t_store/features/shop/screens/product_details/widgets/product_me
 import 'package:t_store/features/shop/screens/product_details/widgets/rating_share_widget.dart';
 import 'package:t_store/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:t_store/utils/constants/colors.dart';
+import 'package:t_store/utils/constants/enums.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_function.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key, this.product});
+  const ProductDetailsScreen({super.key, required this.product});
 
-  final ProductModel? product;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class ProductDetailsScreen extends StatelessWidget {
         child: Column(
           children: [
             ///... product iamge slider
-            const TProdutImageSIider(),
+            TProdutImageSIider(products: product),
 
             ///...product Details
             Padding(
@@ -37,16 +38,20 @@ class ProductDetailsScreen extends StatelessWidget {
                 bottom: TSizes.defultSpace,
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //..Rating & share
                   const TRatingAndShare(),
 
                   //..Price, Titte, Stock, & Brand
-                  const TProductMetaData(),
+                  TProductMetaData(product: product),
+                  const SizedBox(height: TSizes.spaceBtwItems / 2),
 
                   //..Attrabutes
-                  const TProductAttributes(),
-                  const SizedBox(height: TSizes.spaceBtwScetions),
+                  if (product.productType == ProductType.variable.toString())
+                    TProductAttributes(product: product),
+                  if (product.productType == ProductType.variable.toString())
+                    const SizedBox(height: TSizes.spaceBtwScetions),
 
                   //..Checkout Buttons
                   SizedBox(
@@ -60,16 +65,16 @@ class ProductDetailsScreen extends StatelessWidget {
                   const TSectionHeading(
                       title: 'Description', showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwItems),
-                  const ReadMoreText(
-                    'This is a Product description for Blue Nike Sleeve less vest. There are more things that can be added but i am just practicing and nothing else. ',
+                  ReadMoreText(
+                    product.description ?? '',
                     trimLength: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: '  Show more',
                     trimExpandedText: '   Show Less',
-                    moreStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                    lessStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                    moreStyle: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w800),
+                    lessStyle: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w800),
                   ),
                   const SizedBox(height: TSizes.spaceBtwItems),
 

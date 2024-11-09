@@ -202,7 +202,7 @@ class TDummyData {
       stock: 15,
       price: 135,
       isFeatured: true,
-      thumbanil: TImages.productImage1,
+      thumbanil: TImages.productImage22,
       description: 'Green Nike sports shoe',
       brand: BrandModel(
           id: '1',
@@ -211,10 +211,9 @@ class TDummyData {
           productsCount: 265,
           isFeatured: true),
       images: [
-        TImages.productImage1,
         TImages.productImage22,
         TImages.productImage21,
-        TImages.productImage9
+        TImages.productImage6
       ],
       salePrice: 30,
       sku: 'ABR4568',
@@ -230,7 +229,7 @@ class TDummyData {
             stock: 34,
             price: 134,
             salePrice: 122.6,
-            image: TImages.productImage1,
+            image: TImages.productImage22,
             description:
                 'This is a Product description for Green Nike sports shoe.',
             attributesValues: {'Color': 'Green', 'Size': 'EU 34'}),
@@ -238,31 +237,31 @@ class TDummyData {
             id: '2',
             stock: 15,
             price: 132,
-            image: TImages.productImage22,
+            image: TImages.productImage21,
             attributesValues: {'Color': 'Black', 'Size': 'EU 32'}),
         ProductVariationModel(
             id: '3',
             stock: 0,
             price: 234,
-            image: TImages.productImage22,
+            image: TImages.productImage21,
             attributesValues: {'Color': 'Black', 'Size': 'EU 34'}),
         ProductVariationModel(
             id: '4',
             stock: 222,
             price: 232,
-            image: TImages.productImage1,
+            image: TImages.productImage22,
             attributesValues: {'Color': 'Green', 'Size': 'EU 32'}),
         ProductVariationModel(
             id: '5',
             stock: 0,
             price: 334,
-            image: TImages.productImage21,
+            image: TImages.productImage6,
             attributesValues: {'Color': 'Red', 'Size': 'EU 34'}),
         ProductVariationModel(
             id: '6',
             stock: 11,
             price: 332,
-            image: TImages.productImage21,
+            image: TImages.productImage6,
             attributesValues: {'Color': 'Red', 'Size': 'EU 32'}),
       ],
       productType: 'ProductType.variable',
@@ -284,7 +283,7 @@ class TDummyData {
         image: TImages.zaraLogo,
       ),
       images: [
-        TImages.productImage35,
+        TImages.productImage37,
         TImages.productImage36,
         TImages.productImage4,
       ],

@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:t_store/data/services/firebase_storage_service.service.dart';
 import 'package:t_store/features/shop/models/product_model.module.dart';
 import 'package:t_store/utils/constants/enums.dart';
+import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/exceptions/firebase_exception.dart';
 import 'package:t_store/utils/exceptions/platform_exception.dart';
+import 'package:t_store/utils/popups/full_screen_loader.dart';
 
 class ProductRepositry extends GetxController {
   static ProductRepositry get instance => Get.find();
@@ -35,6 +37,9 @@ class ProductRepositry extends GetxController {
   Future<void> uploadDummyData(List<ProductModel> products) async {
     // Upload all the products along with their images
     try {
+      TFullScreenLoader.openLoadingDialog(
+          'UpLoading Data.....', TImages.loading);
+
       final storage = Get.put(TFirebaseStorageService());
 
       for (var product in products) {
@@ -85,6 +90,8 @@ class ProductRepositry extends GetxController {
             .collection("Products")
             .doc(product.id)
             .set(product.toJson());
+
+        TFullScreenLoader.stopLoading();
       }
     } on FirebaseException catch (e) {
       throw TFirebaseException(code: e.code).message;
@@ -92,6 +99,6 @@ class ProductRepositry extends GetxController {
       throw TPlatformException(code: e.code).message;
     } catch (e) {
       throw 'somethinq went wrong. Please try again';
-    }
+    } 
   }
 }

@@ -12,7 +12,7 @@ class TCircularImage extends StatelessWidget {
     required this.image,
     this.backgroundColor,
     this.overLayColor,
-    this.fit = BoxFit.cover,
+    this.fit = BoxFit.contain,
     this.isNetworkImage = false,
     this.padding = 0,
   });
@@ -50,7 +50,7 @@ class TCircularImage extends StatelessWidget {
               )
             : Image.asset(
                 image,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
                 color: overLayColor,
               ),
       ),
