@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 import 'package:t_store/common/layouts/grid_layout.dart';
 import 'package:t_store/common/shammer/shammer_grid.dart';
 import 'package:t_store/common/widgets/custom_shapes/container/primary_header_container.dart';
