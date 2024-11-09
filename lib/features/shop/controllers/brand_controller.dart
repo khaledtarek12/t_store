@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:t_store/data/repositories/brands/brand_repositry.dart';
+import 'package:t_store/data/repositories/product/product_repositry.dart';
 import 'package:t_store/features/shop/models/brand_model.module.dart';
+import 'package:t_store/features/shop/models/product_model.module.dart';
 import 'package:t_store/utils/popups/loaders.dart';
 
 class BrandController extends GetxController {
@@ -41,4 +43,15 @@ class BrandController extends GetxController {
 
   // Get Brands For Category
   // Get Brand Specific Products from your dato source
+  Future<List<ProductModel>> getBrandProducts(String brandId) async {
+    try {
+      final products =
+          await ProductRepositry.instance.getProductsForBrand(brandId: brandId);
+
+      return products;
+    } catch (e) {
+      TLoaders.errorSnakBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
 }

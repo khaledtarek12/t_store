@@ -6,6 +6,7 @@ import 'package:t_store/common/widgets/appbar/custom_appbar.dart';
 import 'package:t_store/common/widgets/brands/brand_cards.dart';
 import 'package:t_store/common/widgets/texts/seaction_heading.dart';
 import 'package:t_store/features/shop/controllers/brand_controller.dart';
+import 'package:t_store/features/shop/screens/barnds/brands_product.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 
 class AllPrandsScreen extends StatelessWidget {
@@ -45,7 +46,12 @@ class AllPrandsScreen extends StatelessWidget {
                   mainAxisExtent: 80,
                   itemBuilder: (_, index) {
                     final brand = brandController.allBrands[index];
-                    return TBrandCard(showBoder: true, brand: brand);
+                    return TBrandCard(
+                      showBoder: true,
+                      brand: brand,
+                      onTap: () =>
+                          Get.to(() => BrandsProductScreen(brand: brand)),
+                    );
                   },
                 );
               })

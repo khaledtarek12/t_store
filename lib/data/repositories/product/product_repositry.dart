@@ -50,6 +50,7 @@ class ProductRepositry extends GetxController {
     }
   }
 
+  /// Get Products based on the Query
   Future<List<ProductModel>> fetchProductsByQuery(Query query) async {
     try {
       final querySnapshot = await query.get();
@@ -57,6 +58,33 @@ class ProductRepositry extends GetxController {
           .map((doc) => ProductModel.fromQuerySnapshot(doc))
           .toList();
       return productList;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      throw 'somethinq went wrong. Please try again';
+    }
+  }
+
+  Future<List<ProductModel>> getProductsForBrand(
+      {required String brandId, int limit = -1}) async {
+    try {
+      final querySnapshot = limit == -1
+          ? await dataBase
+              .collection('Products')
+              .where('Brand.Name', isEqualTo: brandId)
+              .get()
+          : await dataBase
+              .collection('Products')
+              .where('Brand.Name', isEqualTo: brandId)
+              .limit(limit)
+              .get();
+
+      final products =
+          querySnapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+
+      return products;
     } on FirebaseException catch (e) {
       throw TFirebaseException(code: e.code).message;
     } on PlatformException catch (e) {

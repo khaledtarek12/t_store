@@ -11,6 +11,7 @@ import 'package:t_store/common/widgets/brands/brand_cards.dart';
 import 'package:t_store/features/shop/controllers/brand_controller.dart';
 import 'package:t_store/features/shop/controllers/category_controller.dart';
 import 'package:t_store/features/shop/screens/barnds/all_prands.dart';
+import 'package:t_store/features/shop/screens/barnds/brands_product.dart';
 import 'package:t_store/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
@@ -89,7 +90,12 @@ class StoreScreen extends StatelessWidget {
                             mainAxisExtent: 80,
                             itemBuilder: (_, index) {
                               final brand = brandController.featureBrand[index];
-                              return TBrandCard(showBoder: true, brand: brand);
+                              return TBrandCard(
+                                showBoder: true,
+                                brand: brand,
+                                onTap: () => Get.to(
+                                    () => BrandsProductScreen(brand: brand)),
+                              );
                             },
                           );
                         })

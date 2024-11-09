@@ -24,6 +24,7 @@ class TUserProfileTile extends StatelessWidget {
         return controller.imageUploding.value
             ? const TShammerEffect(width: 50, height: 50, radius: 50)
             : TCircularImage(
+                fit: BoxFit.cover,
                 image: image,
                 width: 50,
                 height: 50,

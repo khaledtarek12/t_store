@@ -40,6 +40,7 @@ class ProfileScreen extends StatelessWidget {
                               width: 80, height: 80, radius: 80)
                           : TCircularImage(
                               image: image,
+                              fit: BoxFit.cover,
                               width: 80,
                               height: 80,
                               backgroundColor: Colors.red,

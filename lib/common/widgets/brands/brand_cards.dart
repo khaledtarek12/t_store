@@ -40,19 +40,19 @@ class TBrandCard extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                   overLayColor: isDark ? TColors.white : TColors.black),
             ),
-            const SizedBox(width: TSizes.spaceBtwItems / 2),
+            const SizedBox(width: TSizes.spaceBtwItems),
             //// Text
             Expanded(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TBrandTit1ewithVerifiedIcon(
                     title: brand.name,
                     brandTextSized: TextSizes.large,
                   ),
+                  const SizedBox(height: 5),
                   Text(
-                    ' ${brand.productsCount ?? 0} Products',
+                    '${brand.productsCount ?? 0} Products',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   )

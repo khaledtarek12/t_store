@@ -58,20 +58,22 @@ class TProductCartVertical extends StatelessWidget {
                         applayImageRaduis: true,
                         isNetworkImage: true),
                   ),
+
                   //sales
-                  Positioned(
-                    top: 12,
-                    child: TRoundedContainer(
-                        radius: TSizes.sm,
-                        backgroundCoIor: TColors.secondey.withOpacity(0.8),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: TSizes.sm, vertical: TSizes.xs),
-                        child: Text('$salePercantage%',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge!
-                                .apply(color: TColors.black))),
-                  ),
+                  if (salePercantage != null)
+                    Positioned(
+                      top: 12,
+                      child: TRoundedContainer(
+                          radius: TSizes.sm,
+                          backgroundCoIor: TColors.secondey.withOpacity(0.8),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: TSizes.sm, vertical: TSizes.xs),
+                          child: Text('$salePercantage%',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge!
+                                  .apply(color: TColors.black))),
+                    ),
 
                   //favorite icon button
                   Positioned(

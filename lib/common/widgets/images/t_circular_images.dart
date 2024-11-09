@@ -42,7 +42,7 @@ class TCircularImage extends StatelessWidget {
         child: isNetworkImage
             ? CachedNetworkImage(
                 imageUrl: image,
-                fit: BoxFit.contain,
+                fit: fit,
                 color: overLayColor,
                 errorWidget: (context, url, error) => const Icon(Icons.error),
                 progressIndicatorBuilder: (context, url, progress) =>
@@ -50,7 +50,7 @@ class TCircularImage extends StatelessWidget {
               )
             : Image.asset(
                 image,
-                fit: BoxFit.contain,
+                fit: fit,
                 color: overLayColor,
               ),
       ),
