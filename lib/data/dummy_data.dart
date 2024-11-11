@@ -4,6 +4,8 @@ import 'package:t_store/features/shop/models/category_model.module.dart';
 import 'package:t_store/features/shop/models/product_attribute_model.module.dart';
 import 'package:t_store/features/shop/models/product_model.module.dart';
 import 'package:t_store/features/shop/models/product_variation_model.module.dart';
+import 'package:t_store/features/shop/models/relashtions/brand_category_model.module.dart';
+import 'package:t_store/features/shop/models/relashtions/product_category_model.module.dart';
 import 'package:t_store/routes/routes.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 
@@ -278,7 +280,7 @@ class TDummyData {
       description:
           'This is a Product description for Blue Nike Sleeve less vest. There are more things that can be added but i am jsut practicing and nothing else.',
       brand: BrandModel(
-        id: '6',
+        id: '2',
         name: 'ZARA',
         image: TImages.zaraLogo,
       ),
@@ -289,7 +291,7 @@ class TDummyData {
       ],
       salePrice: 30,
       sku: 'ABR4568',
-      categoryId: '16',
+      categoryId: '3',
       productAttributes: [
         ProductAttributeModel(name: 'Color', values: ['Green', 'Red', 'Blue']),
         ProductAttributeModel(name: 'Size', values: ['EU32', 'EU34']),
@@ -308,7 +310,7 @@ class TDummyData {
       description:
           'This is a Product description for Leather brown Jacket. There are more things that can be added but i am jsut practicing and nothing else.',
       brand: BrandModel(
-        id: '6',
+        id: '2',
         name: 'ZARA',
         image: TImages.zaraLogo,
       ),
@@ -320,7 +322,7 @@ class TDummyData {
       ],
       salePrice: 30,
       sku: 'ABR4568',
-      categoryId: '16',
+      categoryId: '3',
       productAttributes: [
         ProductAttributeModel(name: 'Color', values: ['Green', 'Red', 'Blue']),
         ProductAttributeModel(name: 'Size', values: ['EU32', 'EU34']),
@@ -339,7 +341,7 @@ class TDummyData {
       description:
           'This is a Product description for 4 Color collar t-shirt dry fit. There are more things that can be added but i am jsut practicing and nothing else.',
       brand: BrandModel(
-        id: '6',
+        id: '2',
         name: 'ZARA',
         image: TImages.zaraLogo,
       ),
@@ -351,7 +353,7 @@ class TDummyData {
       ],
       salePrice: 30,
       sku: 'ABR4568',
-      categoryId: '16',
+      categoryId: '3',
       productAttributes: [
         ProductAttributeModel(
             name: 'Color', values: ['Red', 'Yellow', 'Green', 'Blue']),
@@ -552,4 +554,32 @@ class TDummyData {
         productsCount: 265,
         isFeatured: true),
   ];
+
+  static final List<BrandCategoryModel> brandCategory = [
+    BrandCategoryModel(brandId: '1', categoryId: '1'),
+    BrandCategoryModel(brandId: '4', categoryId: '1'),
+    BrandCategoryModel(brandId: '10', categoryId: '2'),
+    BrandCategoryModel(brandId: '5', categoryId: '2'),
+    BrandCategoryModel(brandId: '6', categoryId: '3'),
+    BrandCategoryModel(brandId: '2', categoryId: '3'),
+    BrandCategoryModel(brandId: '7', categoryId: '3'),
+    BrandCategoryModel(brandId: '8', categoryId: '4'),
+    BrandCategoryModel(brandId: '9', categoryId: '4'),
+    BrandCategoryModel(brandId: '3', categoryId: '5'),
+    BrandCategoryModel(brandId: '6', categoryId: '5'),
+    BrandCategoryModel(brandId: '1', categoryId: '6'),
+    BrandCategoryModel(brandId: '4', categoryId: '6'),
+    BrandCategoryModel(brandId: '7', categoryId: '6'),
+    BrandCategoryModel(brandId: '2', categoryId: '7'),
+    BrandCategoryModel(brandId: '1', categoryId: '7'),
+    BrandCategoryModel(brandId: '8', categoryId: '8'),
+    BrandCategoryModel(brandId: '2', categoryId: '8'),
+  ];
+
+  static final List<ProductCategoryModel> productCategories = products
+      .map((product) => ProductCategoryModel(
+            productId: product.id,
+            categoryId: product.categoryId!,
+          ))
+      .toList();
 }

@@ -1,13 +1,17 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:t_store/data/services/firebase_storage_service.service.dart';
 import 'package:t_store/features/shop/models/product_model.module.dart';
+import 'package:t_store/features/shop/models/relashtions/product_category_model.module.dart';
 import 'package:t_store/utils/constants/enums.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/exceptions/firebase_exception.dart';
 import 'package:t_store/utils/exceptions/platform_exception.dart';
 import 'package:t_store/utils/popups/full_screen_loader.dart';
+import 'package:t_store/utils/popups/loaders.dart';
 
 class ProductRepositry extends GetxController {
   static ProductRepositry get instance => Get.find();
@@ -73,11 +77,11 @@ class ProductRepositry extends GetxController {
       final querySnapshot = limit == -1
           ? await dataBase
               .collection('Products')
-              .where('Brand.Name', isEqualTo: brandId)
+              .where('Brand.Id', isEqualTo: brandId)
               .get()
           : await dataBase
               .collection('Products')
-              .where('Brand.Name', isEqualTo: brandId)
+              .where('Brand.Id', isEqualTo: brandId)
               .limit(limit)
               .get();
 
@@ -91,6 +95,64 @@ class ProductRepositry extends GetxController {
       throw TPlatformException(code: e.code).message;
     } catch (e) {
       throw 'somethinq went wrong. Please try again';
+    }
+  }
+
+  Future<List<ProductModel>> getProductsForCateogry(
+      {required String categoryId, int limit = -1}) async {
+    try {
+      // Query to get alt documents wnere product ld matcnes the provided categoryld & Fetch limited or unlimited based on limit
+      final productCategoryQuery = limit == -1
+          ? await dataBase
+              .collection('ProductCategory')
+              .where('categoryId', isEqualTo: categoryId)
+              .get()
+          : await dataBase
+              .collection('ProductCategory')
+              .where('categoryId', isEqualTo: categoryId)
+              .limit(limit)
+              .get();
+
+      // Extract product Ids from the documents
+      List<String> productIds = productCategoryQuery.docs
+          .map((doc) => doc['productId'] as String)
+          .toList();
+
+      // Query to get all documents where the brand ld is in the list of brandlds, FieldPath.documentId to query documents in Collection
+      final productQuery = await dataBase
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productIds)
+          .get();
+      final List<ProductModel> products = productQuery.docs
+          .map((doc) => ProductModel.fromSnapshot(doc))
+          .toList();
+
+      return products;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      throw 'somethinq went wrong. Please try again \n $e';
+    }
+  }
+
+  Future<void> uploadProductCategoriesRelationData(
+      List<ProductCategoryModel> brandCategories) async {
+    TFullScreenLoader.openLoadingDialog('Start Uploading...', TImages.loading);
+    final CollectionReference productCategoryCollection =
+        dataBase.collection('ProductCategory');
+
+    try {
+      for (var productCategory in brandCategories) {
+        await productCategoryCollection.add(productCategory.toJson());
+        log("Uploaded ${productCategory.productId} - ${productCategory.categoryId}");
+      }
+    } catch (e) {
+      log("Error uploading data: $e");
+      TLoaders.errorSnakBar(title: 'Error uploading', message: e.toString());
+    } finally {
+      TFullScreenLoader.stopLoading();
     }
   }
 
@@ -151,8 +213,6 @@ class ProductRepositry extends GetxController {
             .collection("Products")
             .doc(product.id)
             .set(product.toJson());
-
-        TFullScreenLoader.stopLoading();
       }
     } on FirebaseException catch (e) {
       throw TFirebaseException(code: e.code).message;
@@ -160,6 +220,8 @@ class ProductRepositry extends GetxController {
       throw TPlatformException(code: e.code).message;
     } catch (e) {
       throw 'somethinq went wrong. Please try again';
+    } finally {
+      TFullScreenLoader.stopLoading();
     }
   }
 }

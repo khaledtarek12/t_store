@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:t_store/data/repositories/categories/category_repositry.dart';
+import 'package:t_store/data/repositories/product/product_repositry.dart';
 import 'package:t_store/features/shop/models/category_model.module.dart';
+import 'package:t_store/features/shop/models/product_model.module.dart';
 import 'package:t_store/utils/popups/loaders.dart';
 
 class CategoryController extends GetxController {
@@ -46,4 +48,11 @@ class CategoryController extends GetxController {
   // Load selected category data
 
   // Get Category or Sub-Category Products.
+  Future<List<ProductModel>> getCategoryProducts(
+      {required String categoryId, int limit = -1}) async {
+    // Fetch limited (4) products against each subCateqory,
+    final products = await ProductRepositry.instance
+        .getProductsForCateogry(categoryId: categoryId, limit: limit);
+    return products;
+  }
 }

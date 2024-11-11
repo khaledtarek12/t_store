@@ -42,11 +42,24 @@ class BrandController extends GetxController {
   }
 
   // Get Brands For Category
-  // Get Brand Specific Products from your dato source
-  Future<List<ProductModel>> getBrandProducts(String brandId) async {
+  Future<List<BrandModel>> getBrandForCategory(String categoryId) async {
     try {
-      final products =
-          await ProductRepositry.instance.getProductsForBrand(brandId: brandId);
+      final brands =
+          await BrandRepositry.instance.getBrandForCategory(categoryId);
+
+      return brands;
+    } catch (e) {
+      TLoaders.errorSnakBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
+
+  // Get Brand Specific Products from your dato source
+  Future<List<ProductModel>> getBrandProducts(
+      {required String brandId, int limit = -1}) async {
+    try {
+      final products = await ProductRepositry.instance
+          .getProductsForBrand(brandId: brandId, limit: limit);
 
       return products;
     } catch (e) {

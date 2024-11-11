@@ -84,7 +84,8 @@ class UploadDataScreen extends StatelessWidget {
                   icon: Iconsax.link,
                   title: 'Upload Brands & Categories Relation Data',
                   trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () => brand.uploadBrandsCategoriesRelationData(
+                          TDummyData.brandCategory),
                       icon: const Icon(Iconsax.arrow_circle_up3,
                           size: 28, color: TColors.primary))),
               const SizedBox(height: TSizes.spaceBtwItems),
@@ -93,7 +94,9 @@ class UploadDataScreen extends StatelessWidget {
                   icon: Iconsax.link,
                   title: 'Upload Product Categories Relational Data',
                   trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () =>
+                          product.uploadProductCategoriesRelationData(
+                              TDummyData.productCategories),
                       icon: const Icon(Iconsax.arrow_circle_up3,
                           size: 28, color: TColors.primary))),
               const SizedBox(height: TSizes.spaceBtwItems),
