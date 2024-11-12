@@ -71,6 +71,33 @@ class ProductRepositry extends GetxController {
     }
   }
 
+  /// Get Products based on the Query
+  Future<List<ProductModel>> getFavouriteProduct(
+      List<String> productIds) async {
+    try {
+      // Check if productIds list is empty
+      if (productIds.isEmpty) {
+        return []; // Return an empty list if there are no product IDs
+      }
+
+      final snapshot = await dataBase
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productIds)
+          .get();
+
+      return snapshot.docs
+          .map((doc) => ProductModel.fromSnapshot(doc))
+          .toList();
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      log(e.toString());
+      throw 'Something went wrong. Please try again.\n$e';
+    }
+  }
+
   Future<List<ProductModel>> getProductsForBrand(
       {required String brandId, int limit = -1}) async {
     try {

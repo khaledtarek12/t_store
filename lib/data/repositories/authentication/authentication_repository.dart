@@ -15,6 +15,7 @@ import 'package:t_store/utils/exceptions/firebase_auth_exception.dart';
 import 'package:t_store/utils/exceptions/firebase_exception.dart';
 import 'package:t_store/utils/exceptions/format_exception.dart';
 import 'package:t_store/utils/exceptions/platform_exception.dart';
+import 'package:t_store/utils/local_storage/storage_utility.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get istance => Get.find();
@@ -36,6 +37,8 @@ class AuthenticationRepository extends GetxController {
     final user = auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
+        // Initialize User Specific Storaqe
+        await TLocalStorage.init(user.uid);
         Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => VerifyEmailScreen(email: auth.currentUser?.email));

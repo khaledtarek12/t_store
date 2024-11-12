@@ -65,10 +65,8 @@ class HomeScreen extends StatelessWidget {
 
                       //popular product
                       Obx(() {
-                        if (controller.loading.value) {
-                          return const TVerticalProductShimmer();
-                        }
-
+                        if (controller.loading.value) return const TVerticalProductShimmer();
+                        
                         if (controller.featuredProducts.isEmpty) {
                           return Center(
                               child: Text('No Data Found!',

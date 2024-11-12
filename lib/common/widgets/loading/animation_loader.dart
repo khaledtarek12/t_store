@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
+import 'package:t_store/utils/helpers/helper_function.dart';
 
 class TAnimationLoaderWidgets extends StatelessWidget {
   const TAnimationLoaderWidgets({
@@ -41,7 +42,10 @@ class TAnimationLoaderWidgets extends StatelessWidget {
                   child: OutlinedButton(
                       onPressed: onActionPressed,
                       style: OutlinedButton.styleFrom(
-                          backgroundColor: TColors.dark),
+                          side: BorderSide(color: Colors.transparent),
+                          backgroundColor: THelperFunction.isDarkMode(context)
+                              ? Colors.black
+                              : TColors.dark),
                       child: Text(
                         actionText!,
                         style: Theme.of(context)

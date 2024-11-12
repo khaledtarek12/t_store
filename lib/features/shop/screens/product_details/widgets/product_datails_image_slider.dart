@@ -1,12 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/widgets/appbar/custom_appbar.dart';
 import 'package:t_store/common/widgets/custom_shapes/curvied_shapes/curvied_edges_widgets.dart';
-import 'package:t_store/common/widgets/icons/circular_icons.dart';
 import 'package:t_store/common/widgets/images/t_rounded_images.dart';
 import 'package:t_store/common/widgets/loading/custom_loading.dart';
+import 'package:t_store/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:t_store/features/shop/controllers/products/image_controller.dart';
 import 'package:t_store/features/shop/models/product_model.module.dart';
 import 'package:t_store/utils/constants/colors.dart';
@@ -90,9 +89,9 @@ class TProdutImageSIider extends StatelessWidget {
             ),
 
             ///...Appbar Iocons
-            const TAppbar(
+            TAppbar(
               showBackArrow: true,
-              actions: [TcircularIcon(icon: Iconsax.heart5, color: Colors.red)],
+              actions: [TFavouriteIcon(productId: products.id)],
             ),
           ],
         ),

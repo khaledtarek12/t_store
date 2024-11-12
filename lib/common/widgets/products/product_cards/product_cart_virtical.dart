@@ -4,8 +4,8 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store/common/styles/shadows.dart';
 import 'package:t_store/common/widgets/custom_shapes/container/rounded_container.dart';
-import 'package:t_store/common/widgets/icons/circular_icons.dart';
 import 'package:t_store/common/widgets/images/t_rounded_images.dart';
+import 'package:t_store/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:t_store/common/widgets/texts/brand_text_with_verification_icon.dart';
 import 'package:t_store/common/widgets/texts/product_price_text.dart';
 import 'package:t_store/common/widgets/texts/product_title_text.dart';
@@ -76,15 +76,7 @@ class TProductCartVertical extends StatelessWidget {
                     ),
 
                   //favorite icon button
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: TcircularIcon(
-                      icon: Iconsax.heart5,
-                      color: Colors.red,
-                      onPressed: () {},
-                    ),
-                  )
+                   Positioned(right: 0, top: 0, child: TFavouriteIcon(productId: product.id,)),
                 ],
               ),
             ),

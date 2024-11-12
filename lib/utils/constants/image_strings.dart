@@ -38,9 +38,12 @@ class TImages {
   static const String google = 'assets/logos/google.png';
   static const String user = 'assets/images/user/user.png';
 
-  // loading
+  // Animation
   static const String loading = 'assets/images/loading/AnikiHamster.json';
   static const String successEmail = 'assets/images/loading/successEmail.json';
+  static const String pencilAnimation =
+      'assets/images/loading/pencilAnimation.json';
+  static const String pencilWaking = 'assets/images/loading/pencilWaking.json';
 
   // Payment Methods
   static const String paypal = 'assets/images/payment_methods/paypal.png';
