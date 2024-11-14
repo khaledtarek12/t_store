@@ -104,6 +104,8 @@ class SubCategoriesScreen extends StatelessWidget {
                                                 product: products[index]),
                                       ),
                                     ),
+                                    const SizedBox(
+                                        height: TSizes.spaceBtwScetions),
                                   ],
                                 );
                               });
