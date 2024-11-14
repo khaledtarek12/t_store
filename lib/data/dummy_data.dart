@@ -268,10 +268,38 @@ class TDummyData {
       ],
       productType: 'ProductType.variable',
     ),
+    ProductModel(
+      id: '002',
+      title: 'Blue T-shirt for all ages',
+      stock: 15,
+      price: 35,
+      isFeatured: true,
+      thumbanil: TImages.productImage36,
+      description:
+          'This is a Product description for Blue Nike Sleeve less vest. There are more things that can be added but i am jsut practicing and nothing else.',
+      brand: BrandModel(
+        id: '2',
+        name: 'ZARA',
+        image: TImages.zaraLogo,
+      ),
+      images: [
+        TImages.productImage37,
+        TImages.productImage36,
+        TImages.productImage4,
+      ],
+      salePrice: 30,
+      sku: 'ABR4568',
+      categoryId: '9',
+      productAttributes: [
+        ProductAttributeModel(name: 'Color', values: ['Green', 'Red', 'Blue']),
+        ProductAttributeModel(name: 'Size', values: ['EU32', 'EU34']),
+      ],
+      productType: 'ProductType.single',
+    ),
 
 /*......................................................*/
     ProductModel(
-      id: '002',
+      id: '003',
       title: 'Blue T-shirt for all ages',
       stock: 15,
       price: 35,
@@ -301,7 +329,7 @@ class TDummyData {
 
 /*......................................................*/
     ProductModel(
-      id: '003',
+      id: '004',
       title: 'Leather brown Jacket',
       stock: 15,
       price: 38000,
@@ -332,7 +360,7 @@ class TDummyData {
 
 /*......................................................*/
     ProductModel(
-      id: '004',
+      id: '005',
       title: '4 Color collar t-shirt dry fit',
       stock: 15,
       price: 135,
@@ -418,7 +446,7 @@ class TDummyData {
 
 /*......................................................*/
     ProductModel(
-      id: '005',
+      id: '006',
       title: 'Nike Air Jordon Shoes',
       stock: 15,
       price: 35,

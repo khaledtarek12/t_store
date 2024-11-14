@@ -46,6 +46,17 @@ class CategoryController extends GetxController {
   }
 
   // Load selected category data
+  Future<List<CategoryModel>> getSubCategory(
+      {required String categoryId}) async {
+    try {
+      final subCategory =
+          categoryRepositry.getSubCategory(categoryId: categoryId);
+      return subCategory;
+    } catch (e) {
+      TLoaders.errorSnakBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
 
   // Get Category or Sub-Category Products.
   Future<List<ProductModel>> getCategoryProducts(

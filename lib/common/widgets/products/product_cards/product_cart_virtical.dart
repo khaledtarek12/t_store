@@ -76,7 +76,12 @@ class TProductCartVertical extends StatelessWidget {
                     ),
 
                   //favorite icon button
-                   Positioned(right: 0, top: 0, child: TFavouriteIcon(productId: product.id,)),
+                  Positioned(
+                      right: 0,
+                      top: 0,
+                      child: TFavouriteIcon(
+                        productId: product.id,
+                      )),
                 ],
               ),
             ),
