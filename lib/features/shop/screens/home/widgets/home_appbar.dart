@@ -4,7 +4,6 @@ import 'package:skeletonizer/skeletonizer.dart';
 import 'package:t_store/common/widgets/appbar/custom_appbar.dart';
 import 'package:t_store/common/widgets/products/cart/cart_menu_cion.dart';
 import 'package:t_store/features/personalization/controllers/user_controller.dart';
-import 'package:t_store/features/shop/screens/cart/cart.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/text_strings.dart';
 
@@ -39,7 +38,7 @@ class THomeAppBar extends StatelessWidget {
       ),
       actions: [
         TCartCounterIcon(
-            onPressed: () => Get.to(() => const CartScreen()),
+          
             iconColor: TColors.white),
       ],
     );

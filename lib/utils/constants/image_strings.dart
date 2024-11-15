@@ -44,6 +44,8 @@ class TImages {
   static const String pencilAnimation =
       'assets/images/loading/pencilAnimation.json';
   static const String pencilWaking = 'assets/images/loading/pencilWaking.json';
+  static const String cartAnimation =
+      'assets/images/loading/cartAnimation.json';
 
   // Payment Methods
   static const String paypal = 'assets/images/payment_methods/paypal.png';
