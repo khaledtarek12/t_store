@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:t_store/common/widgets/loading/custom_loading.dart';
 import 'package:t_store/data/repositories/address/address_repositry.dart';
 import 'package:t_store/features/personalization/models/address_model.module.dart';
+import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
+import 'package:t_store/utils/helpers/helper_function.dart';
 import 'package:t_store/utils/helpers/network_manager.dart';
 import 'package:t_store/utils/popups/full_screen_loader.dart';
 import 'package:t_store/utils/popups/loaders.dart';
@@ -55,7 +57,11 @@ class AddressController extends GetxController {
           onWillPop: () async => false,
           barrierDismissible: false,
           backgroundColor: Colors.transparent,
-          content: CustomLoading());
+          content: CustomLoading(
+            loadingColor: THelperFunction.isDarkMode(Get.context!)
+                ? TColors.white
+                : TColors.primary,
+          ));
 
       if (selectedAddress.value.id.isNotEmpty) {
         await addressRepositry.updateSelectedField(

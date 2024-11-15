@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common/widgets/loading/custom_loading.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/helpers/firebase_storage.dart';
+import 'package:t_store/utils/helpers/helper_function.dart';
 
 class TCloudHelperFunction {
   // Helper function to check the state of a single database record.
@@ -43,7 +45,13 @@ class TCloudHelperFunction {
       Widget? nothingFound}) {
     if (snapshot.connectionState == ConnectionState.waiting) {
       if (loader != null) return loader;
-      return const CustomLoading(loadingColor: TColors.primary);
+      return Center(
+        child: CustomLoading(
+          loadingColor: THelperFunction.isDarkMode(Get.context!)
+              ? TColors.white
+              : TColors.primary,
+        ),
+      );
     }
 
     if (!snapshot.hasData || snapshot.data == null || snapshot.data!.isEmpty) {
