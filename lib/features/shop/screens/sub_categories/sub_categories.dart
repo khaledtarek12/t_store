@@ -67,6 +67,7 @@ class SubCategoriesScreen extends StatelessWidget {
                                     TCloudHelperFunction.checkMultiRecordState(
                                   snapshot: snapshot,
                                   loader: loader,
+                                  nothingFound: SizedBox(),
                                 );
 
                                 if (widget != null) return widget;
