@@ -71,12 +71,29 @@ class TSingleAddress extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: TSizes.sm / 2),
-                    Text(
-                      addressModel.toString(),
-                      softWrap: true,
+                    SizedBox(
+                      width: 300,
+                      child: Text(
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                        addressModel.toString(),
+                        softWrap: true,
+                      ),
                     ),
                   ],
-                )
+                ),
+                Positioned(
+                  right: 5,
+                  bottom: 0,
+                  child: Icon(
+                    Iconsax.safe_home5,
+                    color: selectedAddress
+                        ? dark
+                            ? TColors.primary
+                            : TColors.dark
+                        : null,
+                  ),
+                ),
               ],
             ),
           ),
