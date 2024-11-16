@@ -77,13 +77,13 @@ class LoginController extends GetxController {
 
       // Attempt login with Firebase Authentication
       log("Attempting login with Firebase..."); // Debug: Starting login attempt
-      await AuthenticationRepository.istance.loginWithEmaitAndPassword(
+      await AuthenticationRepository.instance.loginWithEmaitAndPassword(
           email: email.text.trim(), password: password.text.trim());
       log("Login successful."); // Debug: Login successful
 
       // Remove loader and Redirect
       TFullScreenLoader.stopLoading();
-      AuthenticationRepository.istance.screenRedirect();
+      AuthenticationRepository.instance.screenRedirect();
       log("Loader stopped and user redirected."); // Debug: Loader stopped, user redirected
     } catch (e) {
       // Remove loader and show error message
@@ -117,7 +117,7 @@ class LoginController extends GetxController {
 
       //-- Google Authentication
       final userCredentials =
-          await AuthenticationRepository.istance.signInWithGoogle();
+          await AuthenticationRepository.instance.signInWithGoogle();
 
       // -- Save User Data
       await userController.saveUserCard(userCredentials);
@@ -126,7 +126,7 @@ class LoginController extends GetxController {
       TFullScreenLoader.stopLoading();
 
       // Redirect Screens
-      AuthenticationRepository.istance.screenRedirect();
+      AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
       // Remove the Loaders
       TFullScreenLoader.stopLoading();

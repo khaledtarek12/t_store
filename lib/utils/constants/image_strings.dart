@@ -40,6 +40,8 @@ class TImages {
 
   // Animation
   static const String loading = 'assets/images/loading/AnikiHamster.json';
+  static const String cartEmpty = 'assets/images/loading/cartEmpty.json';
+  static const String orderConfirmed = 'assets/images/loading/orderConfirmed.json';
   static const String successEmail = 'assets/images/loading/successEmail.json';
   static const String pencilAnimation =
       'assets/images/loading/pencilAnimation.json';
@@ -55,7 +57,7 @@ class TImages {
   static const String googlePay = 'assets/images/payment_methods/googlePay.png';
   static const String masterCard =
       'assets/images/payment_methods/masterCard.png';
-  static const String payStacl = 'assets/images/payment_methods/payStacl.png';
+  static const String payStack = 'assets/images/payment_methods/payStacl.png';
   static const String paytm = 'assets/images/payment_methods/paytm.png';
   static const String visa = 'assets/images/payment_methods/visa.png';
 

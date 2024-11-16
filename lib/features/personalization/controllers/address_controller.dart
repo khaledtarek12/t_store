@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/common/widgets/loading/custom_loading.dart';
+import 'package:t_store/common/widgets/texts/seaction_heading.dart';
 import 'package:t_store/data/repositories/address/address_repositry.dart';
 import 'package:t_store/features/personalization/models/address_model.module.dart';
+import 'package:t_store/features/personalization/screens/address/add_new_address.dart';
+import 'package:t_store/features/personalization/screens/address/widgets/single_address.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
+import 'package:t_store/utils/constants/sizes.dart';
+import 'package:t_store/utils/helpers/cloud_helper_function.dart';
 import 'package:t_store/utils/helpers/helper_function.dart';
 import 'package:t_store/utils/helpers/network_manager.dart';
 import 'package:t_store/utils/popups/full_screen_loader.dart';
@@ -143,5 +148,49 @@ class AddressController extends GetxController {
     city.clear();
     country.clear();
     addressFormKey.currentState?.reset();
+  }
+
+  Future<dynamic> selectNewAddressPopup(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (_) => Container(
+        padding: EdgeInsets.all(TSizes.lg),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TSectionHeading(title: 'Select Address', showActionButton: false),
+            SizedBox(height: TSizes.spaceBtwItems),
+            FutureBuilder(
+              future: getAllUserAddress(),
+              builder: (context, snapshot) {
+                final response = TCloudHelperFunction.checkMultiRecordState(
+                    snapshot: snapshot);
+                if (response != null) return response;
+
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (context, index) => TSingleAddress(
+                    addressModel: snapshot.data![index],
+                    onTap: () async {
+                      await selectAddress(snapshot.data![index]);
+                      Get.back();
+                    },
+                  ),
+                );
+              },
+            ),
+            Spacer(),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => Get.to(() => AddNewAddressScreen()),
+                child: Text('Add New Address'),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

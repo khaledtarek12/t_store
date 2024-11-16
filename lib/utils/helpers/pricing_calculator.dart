@@ -8,7 +8,7 @@ class TPricingCalculator {
   }
 
   //..catcuLate Shipping Cost
-  static String catcuLateShippingCost(double productPrice, String location) {
+  static String calcuLateShippingCost(double productPrice, String location) {
     double shippingCost = getShippingCost(location);
     return shippingCost.toStringAsFixed(2);
   }
@@ -20,11 +20,11 @@ class TPricingCalculator {
     return taxAmount.toStringAsFixed(2);
   }
 
-  static double getTaxRateForLocation(tocation) {
+  static double getTaxRateForLocation(location) {
     return 0.10;
   }
 
-  static double getShippingCost(tocation) {
+  static double getShippingCost(location) {
     return 5.00;
   }
 

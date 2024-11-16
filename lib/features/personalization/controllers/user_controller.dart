@@ -118,7 +118,7 @@ class UserController extends GetxController {
       TFullScreenLoader.openLoadingDialog('Processing...', TImages.loading);
 
       // First re-authenticate user
-      final auth = AuthenticationRepository.istance;
+      final auth = AuthenticationRepository.instance;
       final provider =
           auth.authUser!.providerData.map((e) => e.providerId).first;
       if (provider.isNotEmpty) {
@@ -160,9 +160,10 @@ class UserController extends GetxController {
         return;
       }
 
-      await AuthenticationRepository.istance.reAuthenticateWithEmaitAndPassword(
-          verifyEmail.text.trim(), verifyPassword.text.trim());
-      await AuthenticationRepository.istance.deleteAccount();
+      await AuthenticationRepository.instance
+          .reAuthenticateWithEmaitAndPassword(
+              verifyEmail.text.trim(), verifyPassword.text.trim());
+      await AuthenticationRepository.instance.deleteAccount();
       TFullScreenLoader.stopLoading();
 
       Get.offAll(() => const LoginScreen());

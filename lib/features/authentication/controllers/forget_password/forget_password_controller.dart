@@ -49,7 +49,7 @@ class ForgetPasswordController extends GetxController {
 
       // Debug: Starting login attempt
       log("Attempting login with Firebase...");
-      await AuthenticationRepository.istance
+      await AuthenticationRepository.instance
           .sendPasswordResetEmail(email: email.text.trim());
       log("Send Email successfully."); // Debug: Login successful
 
@@ -89,7 +89,7 @@ class ForgetPasswordController extends GetxController {
 
       // Debug: Starting login attempt
       log("Attempting login with Firebase...");
-      await AuthenticationRepository.istance
+      await AuthenticationRepository.instance
           .sendPasswordResetEmail(email: email);
       log("Send Email successfully."); // Debug: Login successful
 

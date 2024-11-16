@@ -16,7 +16,7 @@ class SuccessScreen extends StatelessWidget {
 
   final String image, title, subTitle;
   final VoidCallback onPressed;
-  final bool? isIamge;
+  final bool isIamge;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class SuccessScreen extends StatelessWidget {
           child: Column(
             children: [
               // images
-              isIamge!
+              isIamge
                   ? Image.asset(image,
                       width: THelperFunction.screenWidth() * 0.6)
                   : Lottie.asset(

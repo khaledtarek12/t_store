@@ -22,7 +22,7 @@ class VerifyEmailController extends GetxController {
   /// Send Email Verification tink
   sendEmailVerification() async {
     try {
-      await AuthenticationRepository.istance.sendEmailVerification();
+      await AuthenticationRepository.instance.sendEmailVerification();
       TLoaders.successSnakBar(
           title: 'Email Sent',
           message: 'Please Check your inbox and verify your email.');
@@ -46,7 +46,7 @@ class VerifyEmailController extends GetxController {
                 title: TTexts.yourAccountCreatedTitle,
                 subTitle: TTexts.yourAccountCreatedSubTitle,
                 onPressed: () =>
-                    AuthenticationRepository.istance.screenRedirect(),
+                    AuthenticationRepository.instance.screenRedirect(),
               ));
         }
       },
@@ -57,14 +57,13 @@ class VerifyEmailController extends GetxController {
   checkEmailVerificationStatus() async {
     final currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser != null && currentUser.emailVerified) {
-        Get.off(() => SuccessScreen(
-                image: TImages.successEmail,
-                isIamge: false,
-                title: TTexts.yourAccountCreatedTitle,
-                subTitle: TTexts.yourAccountCreatedSubTitle,
-                onPressed: () =>
-                    AuthenticationRepository.istance.screenRedirect(),
-              ));
+      Get.off(() => SuccessScreen(
+            image: TImages.successEmail,
+            isIamge: false,
+            title: TTexts.yourAccountCreatedTitle,
+            subTitle: TTexts.yourAccountCreatedSubTitle,
+            onPressed: () => AuthenticationRepository.instance.screenRedirect(),
+          ));
     }
   }
 }

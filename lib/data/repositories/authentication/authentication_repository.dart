@@ -18,7 +18,7 @@ import 'package:t_store/utils/exceptions/platform_exception.dart';
 import 'package:t_store/utils/local_storage/storage_utility.dart';
 
 class AuthenticationRepository extends GetxController {
-  static AuthenticationRepository get istance => Get.find();
+  static AuthenticationRepository get instance => Get.find();
 
   final deviceStorage = GetStorage();
   final auth = FirebaseAuth.instance;

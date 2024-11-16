@@ -18,7 +18,7 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final logoutController = AuthenticationRepository.istance;
+    final logoutController = AuthenticationRepository.instance;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(

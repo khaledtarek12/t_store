@@ -14,7 +14,7 @@ class AddressRepositry extends GetxController {
   // Get all Address
   Future<List<AddressModel>> fetchUserAddress() async {
     try {
-      final userId = AuthenticationRepository.istance.authUser!.uid;
+      final userId = AuthenticationRepository.instance.authUser!.uid;
 
       if (userId.isEmpty) {
         throw 'Unabe to find User information. try again later';
@@ -40,7 +40,7 @@ class AddressRepositry extends GetxController {
 
   Future<void> updateSelectedField(String addressId, bool selected) async {
     try {
-      final userId = AuthenticationRepository.istance.authUser!.uid;
+      final userId = AuthenticationRepository.instance.authUser!.uid;
       if (userId.isEmpty) {
         throw 'Unabe to find User information. try again later';
       }
@@ -57,7 +57,7 @@ class AddressRepositry extends GetxController {
 
   Future<String> addAddress(AddressModel address) async {
     try {
-      final userId = AuthenticationRepository.istance.authUser!.uid;
+      final userId = AuthenticationRepository.instance.authUser!.uid;
       final currentAddress = await dataBase
           .collection('Users')
           .doc(userId)

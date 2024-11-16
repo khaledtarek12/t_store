@@ -1,6 +1,6 @@
 enum TextSizes { small, meduim, large }
 
-enum OrderStatus { processing, shiped, delivered }
+enum OrderStatus { pending, processing, shiped, delivered ,cancelled }
 
 
 enum ProductType { single, variable }

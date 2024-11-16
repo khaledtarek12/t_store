@@ -30,10 +30,10 @@ class TAnimationLoaderWidgets extends StatelessWidget {
             Lottie.asset(animation, width: MediaQuery.of(context).size.width),
             const SizedBox(height: TSizes.spaceBtwItems * 2),
             Text(text,
-                style: Theme.of(context).textTheme.titleMedium!.apply(
-                    color: THelperFunction.isDarkMode(context)
-                        ? TColors.white
-                        : TColors.dark),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium!
+                    .apply(color: TColors.white),
                 textAlign: TextAlign.center),
             const SizedBox(height: TSizes.defultSpace),
             showAction

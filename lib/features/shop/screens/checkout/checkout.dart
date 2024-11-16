@@ -3,22 +3,27 @@ import 'package:get/get.dart';
 import 'package:t_store/common/widgets/appbar/custom_appbar.dart';
 import 'package:t_store/common/widgets/custom_shapes/container/rounded_container.dart';
 import 'package:t_store/common/widgets/products/cart/coupone_code.dart';
-import 'package:t_store/common/widgets/success_screen/success_screen.dart';
+import 'package:t_store/features/shop/controllers/cart_controller.dart';
+import 'package:t_store/features/shop/controllers/order_controller.dart';
 import 'package:t_store/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:t_store/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:t_store/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:t_store/features/shop/screens/checkout/widgets/billing_payment_section.dart';
-import 'package:t_store/navigation_menu.dart';
 import 'package:t_store/utils/constants/colors.dart';
-import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_function.dart';
+import 'package:t_store/utils/helpers/pricing_calculator.dart';
+import 'package:t_store/utils/popups/loaders.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cartController = CartController.instance;
+    final subTotal = cartController.totalCartPrice.value;
+    final orderController = Get.put(OrderController());
+    final totalAmount = TPricingCalculator.catcutateTotatPrice(subTotal, 'EG');
     final dark = THelperFunction.isDarkMode(context);
     return Scaffold(
       appBar: TAppbar(
@@ -70,12 +75,12 @@ class CheckoutScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(TSizes.defultSpace),
         child: ElevatedButton(
-            onPressed: () => Get.to(() => SuccessScreen(
-                image: TImages.paymentSuccefully,
-                title: 'Payment Success!',
-                subTitle: 'Your item will be Shpped soon!',
-                onPressed: () => Get.offAll(() => const NavigationMenu()))),
-            child: const Text('Checkout \$256.0')),
+            onPressed: subTotal >0  ? ()=> orderController.processOrder(totalAmount): ()=>TLoaders.warningSnakBar(
+              title: 'Empty Cart',
+              message: 'Add items in the cart in order to proceed.',
+            ),
+            child: Text(
+                'Checkout \$$totalAmount')),
       ),
     );
   }

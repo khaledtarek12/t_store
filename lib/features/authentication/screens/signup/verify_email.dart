@@ -21,7 +21,7 @@ class VerifyEmailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(automaticallyImplyLeading: false, actions: [
         IconButton(
-            onPressed: () => AuthenticationRepository.istance.logout(),
+            onPressed: () => AuthenticationRepository.instance.logout(),
             icon: Icon(
               CupertinoIcons.clear,
               color: dark ? TColors.light : TColors.black,
@@ -57,14 +57,16 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: () => controller.checkEmailVerificationStatus(),
+                      onPressed: () =>
+                          controller.checkEmailVerificationStatus(),
                       child: const Text(TTexts.tcontinue))),
               const SizedBox(height: TSizes.spaceBtwItems),
 
               SizedBox(
                   width: double.infinity,
                   child: TextButton(
-                      onPressed: ()=> controller.sendEmailVerification, child: const Text(TTexts.resendEmail))),
+                      onPressed: () => controller.sendEmailVerification,
+                      child: const Text(TTexts.resendEmail))),
               const SizedBox(height: TSizes.spaceBtwItems),
             ],
           ),

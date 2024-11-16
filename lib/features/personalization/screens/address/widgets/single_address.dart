@@ -51,7 +51,7 @@ class TSingleAddress extends StatelessWidget {
                     color: selectedAddress
                         ? dark
                             ? TColors.light
-                            : TColors.dark
+                            : TColors.primary
                         : null,
                   ),
                 ),
@@ -90,7 +90,7 @@ class TSingleAddress extends StatelessWidget {
                     color: selectedAddress
                         ? dark
                             ? TColors.primary
-                            : TColors.dark
+                            : TColors.white
                         : null,
                   ),
                 ),

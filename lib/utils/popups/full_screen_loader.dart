@@ -18,6 +18,8 @@ class TFullScreenLoader {
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
             child: Container(
+              width: 300, // Set the width of the dialog
+              height: MediaQuery.of(context).size.height * 0.6,
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
                     begin: Alignment.topLeft,
@@ -28,8 +30,7 @@ class TFullScreenLoader {
                     color: Colors.white30,
                     width: 1), // Light border for the glass effect
               ),
-              width: 300, // Set the width of the dialog
-              height: MediaQuery.of(context).size.height * 0.5,
+
               child: Center(
                 child:
                     TAnimationLoaderWidgets(text: text, animation: animation),
