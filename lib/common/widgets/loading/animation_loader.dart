@@ -42,7 +42,7 @@ class TAnimationLoaderWidgets extends StatelessWidget {
                     child: OutlinedButton(
                         onPressed: onActionPressed,
                         style: OutlinedButton.styleFrom(
-                            side: BorderSide(color: Colors.transparent),
+                            side: const BorderSide(color: Colors.transparent),
                             backgroundColor: THelperFunction.isDarkMode(context)
                                 ? Colors.black
                                 : TColors.dark),
