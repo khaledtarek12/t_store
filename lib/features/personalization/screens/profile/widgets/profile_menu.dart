@@ -27,8 +27,8 @@ class TProfileMenu extends StatelessWidget {
             title,
             style: Theme.of(context).textTheme.titleMedium!.apply(
                 color: THelperFunction.isDarkMode(context)
-                    ? TColors.grey.withOpacity(0.7)
-                    : TColors.darkerGrey.withOpacity(0.7)),
+                    ? TColors.grey.withValues(alpha: 0.7)
+                    : TColors.darkerGrey.withValues(alpha: 0.7)),
           ),
         ),
         const SizedBox(width: 11),

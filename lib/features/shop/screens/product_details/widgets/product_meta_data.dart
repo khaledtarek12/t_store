@@ -31,7 +31,7 @@ class TProductMetaData extends StatelessWidget {
             //..sale tag
             TRoundedContainer(
                 radius: TSizes.sm,
-                backgroundCoIor: TColors.secondey.withOpacity(0.8),
+                backgroundCoIor: TColors.secondey.withValues(alpha: 0.8),
                 padding: const EdgeInsets.symmetric(
                     horizontal: TSizes.sm, vertical: TSizes.xs),
                 child: Text('$salePercentage%',

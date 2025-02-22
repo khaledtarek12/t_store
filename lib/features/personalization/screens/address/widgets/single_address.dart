@@ -33,7 +33,7 @@ class TSingleAddress extends StatelessWidget {
             width: double.infinity,
             showBorder: true,
             backgroundCoIor: selectedAddress
-                ? TColors.primary.withOpacity(0.5)
+                ? TColors.primary.withValues(alpha: 0.5)
                 : Colors.transparent,
             borderCoIor: selectedAddress
                 ? Colors.transparent

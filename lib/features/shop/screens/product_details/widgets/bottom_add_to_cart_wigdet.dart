@@ -68,7 +68,7 @@ class TBottomAddToCart extends StatelessWidget {
                   splashFactory: NoSplash.splashFactory,
                   padding: const EdgeInsets.all(TSizes.md),
                   backgroundColor: controller.productQuantityInCart.value < 1
-                      ? TColors.black.withOpacity(0.5)
+                      ? TColors.black.withValues(alpha: 0.5)
                       : TColors.black,
                   side: const BorderSide(color: TColors.black, width: 2),
                 ),

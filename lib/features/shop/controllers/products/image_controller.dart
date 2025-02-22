@@ -39,7 +39,7 @@ class ImageController extends GetxController {
     showGeneralDialog(
       context: context,
       barrierLabel: 'Dismiss', // Add this label to fix the error
-      barrierColor: Colors.black.withOpacity(0.3), // Background overlay
+      barrierColor: Colors.black.withValues(alpha: 0.3), // Background overlay
       barrierDismissible: true,
       transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, animation, secondaryAnimation) {
@@ -64,10 +64,10 @@ class ImageController extends GetxController {
                     // Glass effect container for the image
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.5),
+                        color: Colors.white.withValues(alpha: 0.5),
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
-                          color: Colors.white.withOpacity(0.4),
+                          color: Colors.white.withValues(alpha: 0.4),
                           width: 5,
                         ),
                       ),
@@ -85,10 +85,10 @@ class ImageController extends GetxController {
                     // Glass effect container for the close button
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: Colors.white.withOpacity(0.4),
+                          color: Colors.white.withValues(alpha: 0.4),
                           width: 1.5,
                         ),
                       ),

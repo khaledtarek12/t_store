@@ -27,8 +27,8 @@ class NavigationMenu extends StatelessWidget {
               controller.selectedIndex.value = index,
           backgroundColor: darkMode ? TColors.black : TColors.light,
           indicatorColor: darkMode
-              ? TColors.white.withOpacity(0.1)
-              : TColors.black.withOpacity(0.1),
+              ? TColors.white.withValues(alpha: 0.1)
+              : TColors.black.withValues(alpha: 0.1),
           destinations: const [
             NavigationDestination(
               icon: Icon(Iconsax.home),
@@ -67,6 +67,4 @@ class NavigationController extends GetxController {
     const WhishListScreen(),
     const SettingScreen(),
   ];
-
-  
 }
