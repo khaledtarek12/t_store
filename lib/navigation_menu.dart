@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:t_store/features/personalization/screens/setting/setting.dart';
 import 'package:t_store/features/shop/screens/home/home.dart';
@@ -46,9 +45,9 @@ class NavigationMenu extends StatelessWidget {
               selectedIcon: Icon(Iconsax.heart5),
             ),
             NavigationDestination(
-              icon: Icon(IconlyLight.profile),
+              icon: Icon(Iconsax.user),
               label: 'Profile',
-              selectedIcon: Icon(IconlyBold.profile),
+              selectedIcon: Icon(Iconsax.user5),
             ),
           ],
         ),

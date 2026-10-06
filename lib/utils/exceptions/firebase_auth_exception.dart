@@ -27,8 +27,10 @@ class TFirebaseAuthException implements Exception {
         return 'The password provided is too weak. Choose a stronger password.';
       case 'account-exists-with-different-credential':
         return 'An account already exists with the same email address but different sign-in credentials.';
+      // With email enumeration protection enabled, Firebase returns this code
+      // instead of wrong-password/user-not-found.
       case 'invalid-credential':
-        return 'The credential provided is malformed or has expired.';
+        return 'Incorrect email or password. If you signed up with Google, use "Continue with Google" or reset your password.';
       case 'invalid-sender':
         return 'The email template sender is invalid. Please verify the sender\'s email.';
       case 'invalid-recipient-email':

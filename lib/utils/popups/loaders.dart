@@ -68,6 +68,7 @@ class TLoaders {
       message,
       isDismissible: true,
       shouldIconPulse: true,
+      mainButton: null,
       colorText: Colors.white,
       backgroundColor: Colors.red.shade600,
       snackPosition: SnackPosition.TOP,

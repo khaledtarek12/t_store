@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/helpers/helper_function.dart';
 
@@ -9,7 +9,7 @@ class TProfileMenu extends StatelessWidget {
     required this.title,
     required this.value,
     this.onPressed,
-    this.icon = IconlyLight.arrowRight2,
+    this.icon = Iconsax.arrow_right_3,
   });
 
   final String title;
