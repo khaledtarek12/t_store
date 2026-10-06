@@ -22,12 +22,19 @@ class TAnimationLoaderWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screen = MediaQuery.sizeOf(context);
     return Center(
-      child: Padding(
-        padding: EdgeInsets.only(top: THelperFunction.screenHeight() * .155),
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(vertical: TSizes.defultSpace),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Lottie.asset(animation, width: MediaQuery.of(context).size.width),
+            Lottie.asset(
+              animation,
+              width: screen.width * .8,
+              height: screen.height * .3,
+              fit: BoxFit.contain,
+            ),
             const SizedBox(height: TSizes.spaceBtwItems * 2),
             Text(text,
                 style: Theme.of(context)
