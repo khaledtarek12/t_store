@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:t_store/data/services/firebase_storage_service.service.dart';
+import 'package:t_store/data/services/supabase_storage_service.service.dart';
 import 'package:t_store/features/shop/models/category_model.module.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/exceptions/firebase_exception.dart';
@@ -59,16 +59,13 @@ class CategoryRepositry extends GetxController {
     try {
       TFullScreenLoader.openLoadingDialog('Uploading Data', TImages.loading);
       // Upload all the Categories along with their Images
-      final storage = Get.put(TFirebaseStorageService());
+      final storage = Get.put(TSupabaseStorageService());
 
       // Loop through each category
       for (var category in categories) {
-        // Get Imagedata link from the local assets
-        final file = await storage.getImageDataFromAssets(category.image);
-
         // Upload Image and Get its URL
-        final url =
-            await storage.uploadImageData('Categories', file, category.name);
+        final url = await storage.uploadAsset('Categories', category.image,
+            name: category.name);
 
         // Assign URL to Category. image attribute
         category.image = url;

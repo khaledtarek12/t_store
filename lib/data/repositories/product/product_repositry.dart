@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:t_store/data/services/firebase_storage_service.service.dart';
+import 'package:t_store/data/services/supabase_storage_service.service.dart';
 import 'package:t_store/features/shop/models/product_model.module.dart';
 import 'package:t_store/features/shop/models/relashtions/product_category_model.module.dart';
 import 'package:t_store/utils/constants/enums.dart';
@@ -190,16 +190,12 @@ class ProductRepositry extends GetxController {
       TFullScreenLoader.openLoadingDialog(
           'UpLoading Data.....', TImages.loading);
 
-      final storage = Get.put(TFirebaseStorageService());
+      final storage = Get.put(TSupabaseStorageService());
 
       for (var product in products) {
-        // Get image data link from local assets
-        final thumbnail =
-            await storage.getImageDataFromAssets(product.thumbanil);
-
         // Upload image and get its URL
-        final url = await storage.uploadImageData(
-            'Products/Images', thumbnail, product.thumbanil.toString());
+        final url =
+            await storage.uploadAsset('Products/Images', product.thumbanil);
 
         // Assign URL to product. thumbnail attribute
         product.thumbanil = url;
@@ -208,12 +204,8 @@ class ProductRepositry extends GetxController {
         if (product.images != null && product.images!.isNotEmpty) {
           List<String> imagesUrl = [];
           for (var image in product.images!) {
-            // Get image data link from local assets
-            final assetsImage = await storage.getImageDataFromAssets(image);
-
             // Upload image and get its URL
-            final url = await storage.uploadImageData(
-                'Products/Images', assetsImage, image);
+            final url = await storage.uploadAsset('Products/Images', image);
 
             imagesUrl.add(url);
           }
@@ -224,13 +216,9 @@ class ProductRepositry extends GetxController {
         // Upload Variation Images
         if (product.productType == ProductType.variable.toString()) {
           for (var variation in product.productVariations!) {
-            // Get image data tink from locat assets
-            final assetImage =
-                await storage.getImageDataFromAssets(variation.image);
-
             // Upload image and get its URL
-            final url = await storage.uploadImageData(
-                'Products/Images', assetImage, variation.image);
+            final url =
+                await storage.uploadAsset('Products/Images', variation.image);
 
             variation.image = url;
           }
@@ -246,7 +234,7 @@ class ProductRepositry extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformException(code: e.code).message;
     } catch (e) {
-      throw 'somethinq went wrong. Please try again';
+      throw 'somethinq went wrong. Please try again : $e';
     } finally {
       TFullScreenLoader.stopLoading();
     }

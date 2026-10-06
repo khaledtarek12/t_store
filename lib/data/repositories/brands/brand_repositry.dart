@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:t_store/data/services/firebase_storage_service.service.dart';
+import 'package:t_store/data/services/supabase_storage_service.service.dart';
 import 'package:t_store/features/shop/models/brand_model.module.dart';
 import 'package:t_store/features/shop/models/relashtions/brand_category_model.module.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
@@ -98,7 +98,7 @@ class BrandRepositry extends GetxController {
 
     try {
       TFullScreenLoader.openLoadingDialog('Uploading Data...', TImages.loading);
-      final storage = Get.put(TFirebaseStorageService());
+      final storage = Get.put(TSupabaseStorageService());
 
       for (var brand in brands) {
         // Check if the brand image path is valid
@@ -106,11 +106,8 @@ class BrandRepositry extends GetxController {
           throw 'Image path is missing for brand ${brand.name}';
         }
 
-        // Attempt to get image data
-        final file = await storage.getImageDataFromAssets(brand.image);
-
         // Upload image data and get URL
-        final url = await storage.uploadImageData('Brands', file, brand.image);
+        final url = await storage.uploadAsset('Brands', brand.image);
         if (url.isEmpty) {
           throw 'Failed to upload image for ${brand.name}';
         }

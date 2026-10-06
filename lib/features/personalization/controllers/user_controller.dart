@@ -11,6 +11,7 @@ import 'package:t_store/features/authentication/screens/login/login.dart';
 import 'package:t_store/features/personalization/screens/profile/widgets/re_authenticate_user_login_form.dart';
 import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/constants/sizes.dart';
+import 'package:t_store/utils/constants/supabase_constants.dart';
 import 'package:t_store/utils/helpers/network_manager.dart';
 import 'package:t_store/utils/popups/full_screen_loader.dart';
 import 'package:t_store/utils/popups/loaders.dart';
@@ -185,9 +186,12 @@ class UserController extends GetxController {
 
       if (image != null) {
         imageUploding.value = true;
-        // Upload Inage
-        final imageUrl =
-            await userRepository.uploadImagge('Users/Image/Profile/', image);
+        // Upload Inage. Storage policies only allow a user to write inside
+        // their own uid folder, so the uid has to be part of the path.
+        final uid = AuthenticationRepository.instance.authUser?.uid;
+        if (uid == null) throw 'You must be logged in to change your photo.';
+        final imageUrl = await userRepository.uploadImagge(
+            '${TSupabase.profileFolder}/$uid', image);
 
         // update user Image Record
         Map<String, dynamic> json = {'ProfilePicture': imageUrl};
