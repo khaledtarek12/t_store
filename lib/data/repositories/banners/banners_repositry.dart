@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:t_store/data/services/firebase_storage_service.service.dart';
+import 'package:t_store/data/services/supabase_storage_service.service.dart';
 import 'package:t_store/features/shop/models/banner_model.module.dart';
+import 'package:t_store/utils/constants/image_strings.dart';
 import 'package:t_store/utils/exceptions/firebase_exception.dart';
 import 'package:t_store/utils/exceptions/platform_exception.dart';
+import 'package:t_store/utils/popups/full_screen_loader.dart';
 
 class BannersRepositry extends GetxController {
   static BannersRepositry get instance => Get.find();
@@ -35,17 +37,14 @@ class BannersRepositry extends GetxController {
   /// Upload Banners to the Cloud Firebase
   Future<void> uploadDummyData(List<BannerModel> banners) async {
     try {
+      TFullScreenLoader.openLoadingDialog('Uploading Data', TImages.loading);
       // Upload all the Categories along with their Images
-      final storage = Get.put(TFirebaseStorageService());
+      final storage = Get.put(TSupabaseStorageService());
 
       // Loop through each category
       for (var banner in banners) {
-        // Get Imagedata link from the local assets
-        final file = await storage.getImageDataFromAssets(banner.imageUrl);
-
         // Upload Image and Get its URL
-        final url =
-            await storage.uploadImageData('Banners', file, banner.imageUrl);
+        final url = await storage.uploadAsset('Banners', banner.imageUrl);
 
         // Assign URL to Category. image attribute
         banner.imageUrl = url;
@@ -58,7 +57,9 @@ class BannersRepositry extends GetxController {
     } on PlatformException catch (e) {
       throw TPlatformException(code: e.code).message;
     } catch (e) {
-      throw 'somethinq went wrong. Please try again';
+      throw 'somethinq went wrong. Please try again : $e';
+    } finally {
+      TFullScreenLoader.stopLoading();
     }
   }
 }
